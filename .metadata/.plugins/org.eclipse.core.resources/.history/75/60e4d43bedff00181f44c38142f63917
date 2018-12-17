@@ -1,0 +1,24 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_contenuto")
+public class contenutoDAO implements Serializable{
+
+	private static final long serialVersionUID = -6538188668111351202L;
+
+	private Integer idContenuto;
+	private String testoContenuto;
+	private String nomeFile;
+	private String formatoFile;
+	private Blob file;
+	private Blob url;
+	private Date dataCondivisione;
+	private utenteDAO idUtente;
+}

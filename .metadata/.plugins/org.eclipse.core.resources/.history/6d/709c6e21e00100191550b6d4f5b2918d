@@ -1,0 +1,17 @@
+package it.linksmt.teamshare.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import it.linksmt.teamshare.dao.entities.User;
+import it.linksmt.teamshare.entities.utenteDAO;
+
+@Repository
+public interface UserRepository extends CrudRepository<utenteDAO, Integer> {
+	
+	List<utenteDAO> findAll();
+	utenteDAO findAllById(Integer id);
+	void deleteById(Integer id);
+}

@@ -1,0 +1,27 @@
+package it.linksmt.converter;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import it.linksmt.teamshare.business.dtos.UserDto;
+import it.linksmt.teamshare.business.request.UserRequestDto;
+import it.linksmt.teamshare.dao.entities.User;
+
+@Mapper
+public interface UtenteConverter {
+
+	UtenteConverter MAPPER = Mappers.getMapper(UtenteConverter.class);
+
+	List<UserDto> toListaBancaDTOesponse(Iterable<User> allUser);
+
+	UserDto toUserDTO(utenteDAO banca);
+	
+	utenteDAO toUser(UserDto banca);
+	
+	utenteDAO toUser(UserRequestDto banca);
+   
+
+
+}

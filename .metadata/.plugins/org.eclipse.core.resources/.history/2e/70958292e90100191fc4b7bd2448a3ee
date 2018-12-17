@@ -1,0 +1,19 @@
+package it.linksmt.teamshare.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import it.linksmt.teamshare.entities.utenteDAO;
+
+
+
+@Repository
+public interface UserRepository extends CrudRepository<utenteDAO, Integer> {
+	
+	List<utenteDAO> findByFirstNameAndLastName(String FirstName,String LastName);
+	List<utenteDAO> findByFirstName(String FirstName);
+	List<utenteDAO> findByLastName(String LastName);
+	List<utenteDAO> findByEmail(String email);
+}

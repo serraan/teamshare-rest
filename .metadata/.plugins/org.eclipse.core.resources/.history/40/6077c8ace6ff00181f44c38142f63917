@@ -1,0 +1,26 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_utente")
+public class utenteDAO implements Serializable{
+
+	private static final long serialVersionUID = 6197130342670307616L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idUtente;
+	private String nome;
+	private String cognome;
+	private Date dataNascita;
+	private String email;
+	private String password;
+	private Blob Avatar;
+
+}

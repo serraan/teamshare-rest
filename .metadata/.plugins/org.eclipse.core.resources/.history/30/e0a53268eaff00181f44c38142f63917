@@ -1,0 +1,35 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_post")
+public class postDAO implements Serializable{
+
+	private static final long serialVersionUID = -1458400562028096121L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idPost;
+	@Column(name = "Titolo_Post")
+	private String titoloPost;
+	@Column(name = "Descizione_Post")
+	private String descrizionePost;
+	@Column(name = "Riferimento_Post")
+	private String riferimentoPost;
+	@OneToOne
+	@JoinColumn(name = "IdUtente")
+	private utenteDAO idUtente;
+	@Column(name = "Data_Post")
+	private Date dataPost;
+}

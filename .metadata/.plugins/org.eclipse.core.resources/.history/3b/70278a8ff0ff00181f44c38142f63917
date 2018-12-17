@@ -1,0 +1,21 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_utente_reagisce_contenuto")
+public class utenteContenutoDAO implements Serializable{
+
+	private static final long serialVersionUID = 4851689194389277202L;
+
+	@Id
+	private utenteDAO idUtente;
+	@Id
+	private contenutoDAO idContenuto;
+	@Id
+	private tipoDAO idTipo;
+}

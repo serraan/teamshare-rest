@@ -1,0 +1,7 @@
+package it.linksmt.teamshare.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface activitySprintRepository extends CrudRepository<activitySprintRepository, Integer> {
+
+}

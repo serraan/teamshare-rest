@@ -1,0 +1,17 @@
+it\linksmt\teamshare\entities\teamDAO.class
+it\linksmt\teamshare\entities\attivitaStatoDAO.class
+it\linksmt\teamshare\entities\postDAO.class
+it\linksmt\teamshare\entities\commentoDAO.class
+it\linksmt\teamshare\entities\impedimentDAO.class
+it\linksmt\teamshare\entities\utenteDAO.class
+it\linksmt\teamshare\entities\attivitaSprintDAO.class
+it\linksmt\teamshare\entities\notaDAO.class
+it\linksmt\teamshare\entities\releaseDAO.class
+it\linksmt\teamshare\entities\statoDAO.class
+it\linksmt\teamshare\entities\utenteTeamDAO.class
+it\linksmt\teamshare\entities\contenutoDAO.class
+it\linksmt\teamshare\entities\sprintDAO.class
+it\linksmt\teamshare\entities\teamContenutoDAO.class
+it\linksmt\teamshare\entities\attivitaDAO.class
+it\linksmt\teamshare\entities\tipoDAO.class
+it\linksmt\teamshare\entities\utenteContenutoDAO.class

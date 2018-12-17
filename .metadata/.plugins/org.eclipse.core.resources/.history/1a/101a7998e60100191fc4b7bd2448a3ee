@@ -1,0 +1,18 @@
+package it.linksmt.teamshare.business.services;
+
+import java.util.List;
+
+import it.linksmt.teamshare.business.dtos.UserDto;
+import it.linksmt.teamshare.dao.entities.User;
+
+public interface UserService {
+
+	public List<UserDto> searchUsers();
+	
+	public List<UserDto> getUsers();
+	public UserDto getUser(Integer id);
+	public User addUser(UserDto user);
+	public User updateUser(UserDto user);
+	public void deleteUser(Integer id);
+	
+}

@@ -1,0 +1,10 @@
+package it.linksmt.teamshare.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table("tb_utente")
+public class utenteDAO {
+
+}

@@ -1,0 +1,24 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "attivita_stato")
+public class attivitaStatoDAO implements Serializable {
+
+	private static final long serialVersionUID = 3482318305237487718L;
+
+	@Column(name = "Data_Inizio")
+	private Date dataInizio;
+	@Column(name = "Data_Fine")
+	private Date dataFine;
+	@OneToOne
+	private attivitaDAO idAttivita;
+	private statoDAO idStato;
+}
