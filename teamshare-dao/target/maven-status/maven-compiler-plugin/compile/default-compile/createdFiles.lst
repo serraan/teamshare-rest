@@ -1,0 +1,8 @@
+it\linksmt\teamshare\dao\repositories\ActivityRepository.class
+it\linksmt\teamshare\dao\repositories\UserRepository.class
+it\linksmt\teamshare\dao\repositories\SprintRepository.class
+it\linksmt\teamshare\dao\entities\Activity.class
+it\linksmt\teamshare\dao\entities\Post.class
+it\linksmt\teamshare\dao\entities\Sprint.class
+it\linksmt\teamshare\dao\entities\User.class
+it\linksmt\teamshare\dao\repositories\PostRepository.class
