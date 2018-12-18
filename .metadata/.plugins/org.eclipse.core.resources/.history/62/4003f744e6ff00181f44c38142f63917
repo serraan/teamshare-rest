@@ -1,9 +1,0 @@
-package it.linksmt.teamshare.entities;
-
-import javax.persistence.Entity;
-
-@Entity
-@Table
-public class utenteDAO {
-
-}

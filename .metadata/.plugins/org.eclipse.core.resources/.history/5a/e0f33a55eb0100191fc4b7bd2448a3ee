@@ -1,7 +1,0 @@
-package it.linksmt.teamshare.repository;
-
-import org.springframework.data.repository.CrudRepository;
-
-public interface userTeamRepository extends CrudRepository<T, ID> {
-
-}

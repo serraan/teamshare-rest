@@ -1,8 +1,0 @@
-package it.linksmt.teamshare.entities;
-
-
-
-@Entity
-public class utenteDAO {
-
-}

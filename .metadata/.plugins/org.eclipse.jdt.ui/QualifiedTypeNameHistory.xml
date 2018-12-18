@@ -16,4 +16,6 @@
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 <fullyQualifiedTypeName name="it.linksmt.teamshare.entities.attivitaDAO"/>
 <fullyQualifiedTypeName name="it.linksmt.teamshare.entities.comment"/>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.business.request.ActivityRequestDto"/>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.business.dtos.ActivityDto"/>
 </qualifiedTypeNameHistroy>

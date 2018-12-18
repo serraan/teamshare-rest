@@ -1,4 +1,3 @@
-activeuserprofiles=SANSOD-NB;Team
+activeuserprofiles=SANSOD-NB;SERRAAN-NB;Team
 eclipse.preferences.version=1
-org.eclipse.rse.systemtype.local.systemType.defaultUserId=SANSOD
-useridperkey=SANSOD-NB.Local\=SANSOD;
+useridperkey=SANSOD-NB.Local\=SERRAANDREA;
