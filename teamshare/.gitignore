@@ -1,0 +1,29 @@
+# project
+*target*
+*.jar
+*.war
+*.ear
+*.class
+*.log
+
+# eclipse
+*.pydevproject
+*.project
+*.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+*.classpath
+*.settings/
+*.loadpat
+*.recommenders/
+*.factorypath
+*.launch
+
+# other
+*.vscode/
