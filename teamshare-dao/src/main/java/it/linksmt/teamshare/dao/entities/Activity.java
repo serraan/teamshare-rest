@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -49,8 +50,17 @@ public class Activity implements Serializable{
 	@JoinColumn(name = "id_utente_creatore")
 	private User utenteAssegnatario;
 	
-	@OneToMany(mappedBy = "activity" , cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<ActivitySprint> lstActivitySprint;
+	/*
+		@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "zone_dealer", joinColumns = @JoinColumn(name = "id_zone", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_dealer", referencedColumnName = "id"))
+	private List<Dealer> dealers;
+
+	*/
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "tb_attivita_sprint", joinColumns = @JoinColumn(name = "id_attivita", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "id_sprint", referencedColumnName = "id"))
+	private List<Sprint> sprints;
 
 	public Integer getId() {
 		return id;
@@ -116,14 +126,12 @@ public class Activity implements Serializable{
 		this.utenteAssegnatario = utenteAssegnatario;
 	}
 
-	public List<ActivitySprint> getLstActivitySprint() {
-		return lstActivitySprint;
+	public List<Sprint> getSprints() {
+		return sprints;
 	}
 
-	public void setLstActivitySprint(List<ActivitySprint> lstActivitySprint) {
-		this.lstActivitySprint = lstActivitySprint;
+	public void setSprints(List<Sprint> sprints) {
+		this.sprints = sprints;
 	}
-	
-	
-	
+
 }

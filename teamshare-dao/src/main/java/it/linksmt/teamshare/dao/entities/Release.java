@@ -14,19 +14,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_release")
-public class Release implements Serializable{
+public class Release implements Serializable {
 
 	private static final long serialVersionUID = -7846720263271395516L;
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
-	@OneToMany(mappedBy = "release" , cascade=CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(mappedBy = "release", cascade = CascadeType.ALL) //Rimosso "Orphan Removal"
 	private List<Sprint> lstSprint;
 
 	public Integer getId() {
@@ -52,8 +52,5 @@ public class Release implements Serializable{
 	public void setLstSprint(List<Sprint> lstSprint) {
 		this.lstSprint = lstSprint;
 	}
-	
-	
-	
-	
+
 }

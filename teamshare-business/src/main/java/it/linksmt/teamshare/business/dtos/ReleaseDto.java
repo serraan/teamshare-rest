@@ -2,7 +2,10 @@ package it.linksmt.teamshare.business.dtos;
 
 import java.io.Serializable;
 
-public class ReleaseDto implements Serializable {
+import it.linksmt.teamshare.business.dto.request.ReleaseRequestDto;
+
+
+public class ReleaseDto extends ReleaseRequestDto implements Serializable {
 
 	/**
 	 * 
@@ -11,22 +14,12 @@ public class ReleaseDto implements Serializable {
 
 	private Integer id;
 
-	private String nome;
-
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 }

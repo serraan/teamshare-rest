@@ -18,4 +18,14 @@ public class ActivityDto extends ActivityRequestDto implements Serializable {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "Activity [Titolo: " + getTitolo() + " | Descrizione: " + getDescrizione() + " | Tipo: "
+				+ getTipo() + " | Priorita: " + getPriorita() + " | DataPresaIncarico: "+ getDataPresaIncarico()
+				+ "| Id Utente Creatore: " + getIdUtenteCreatore() + " | IdUtenteAssegnatario: "
+				+ getIdUtenteAssegnatario() + " | Lista Sprint: " + getSprints() + "]";
+	}
+	
+	
+
 }

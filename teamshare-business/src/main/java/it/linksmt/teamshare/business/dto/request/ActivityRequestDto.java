@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import it.linksmt.teamshare.business.dtos.ActivitySprintDto;
+import it.linksmt.teamshare.business.dtos.SprintDto;
 
 public class ActivityRequestDto implements Serializable {
 	
@@ -24,7 +24,7 @@ public class ActivityRequestDto implements Serializable {
 	
 	private Integer idUtenteAssegnatario;
 	
-	private List<ActivitySprintDto> lstActivitySprint;
+	private List<SprintDto> sprints;
 
 	public String getTitolo() {
 		return titolo;
@@ -82,14 +82,12 @@ public class ActivityRequestDto implements Serializable {
 		this.idUtenteAssegnatario = idUtenteAssegnatario;
 	}
 
-	public List<ActivitySprintDto> getLstActivitySprint() {
-		return lstActivitySprint;
+	public List<SprintDto> getSprints() {
+		return sprints;
 	}
 
-	public void setLstActivitySprint(List<ActivitySprintDto> lstActivitySprint) {
-		this.lstActivitySprint = lstActivitySprint;
+	public void setSprints(List<SprintDto> sprints) {
+		this.sprints = sprints;
 	}
 
-
-	
 }

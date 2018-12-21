@@ -31,7 +31,7 @@ public class Type implements Serializable {
 	@Column(name = "path_immagine")
 	private String pathImmagine;
 	
-	@OneToMany(mappedBy = "idType", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "idType", cascade=CascadeType.ALL) //Rimosso "Orphan Removal"
 	private List<UserTypeContent> lsUserTypeContent;
 
 	public List<UserTypeContent> getLsUserTypeContent() {

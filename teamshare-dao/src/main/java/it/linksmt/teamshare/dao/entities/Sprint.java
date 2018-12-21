@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,11 +35,11 @@ public class Sprint implements Serializable{
 	@Column(name = "nome")
 	private String nomeSprint;
 	
-	@OneToOne
+	@ManyToOne  //Cambiato da OneToOne
 	@JoinColumn(name = "id_release")
 	private Release release;
 	
-	@OneToMany(mappedBy = "sprint", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "sprint", cascade=CascadeType.ALL) //Rimosso "Orphan Removal"
 	private List<ActivitySprint> lstActivitySprint;
 
 	public Integer getId() {

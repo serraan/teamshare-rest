@@ -54,8 +54,4 @@ public class ActivitySprint implements Serializable{
 		this.sprint = sprint;
 	}
 	
-	
-	
-	
-	
 }
