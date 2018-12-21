@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import it.linksmt.teamshare.business.dtos.ImpedimentDto;
-import it.linksmt.teamshare.business.request.ImpedimentRequestDto;
+import it.linksmt.teamshare.business.dto.request.ImpedimentRequestDto;
 import it.linksmt.teamshare.business.services.ImpedimentService;
 
 @Api(value = "Impediment Controller", description = "Impediment Controller", tags = { "Impediment" })

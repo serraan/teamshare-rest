@@ -1,4 +1,4 @@
-package it.linksmt.teamshare.entities;
+package it.linksmt.teamshare.dao.entities;
 
 import java.io.Serializable;
 import java.util.Date;

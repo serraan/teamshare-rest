@@ -1,7 +1,6 @@
-INDEX VERSION 1.4+C:\Users\ROSATOD\Documents\pw_teamshare\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1786664287.index
-3939116644.index
+INDEX VERSION 1.4+C:\Users\ROSATOD\Documents\piastrellisti\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3722043649.index
+1486142647.index
+2711576436.index
 4099676138.index
-3378290123.index
-1309634361.index
-1879429799.index
+3007867911.index
