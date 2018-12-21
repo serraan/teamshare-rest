@@ -1,0 +1,13 @@
+package it.linksmt.teamshare.business.request;
+
+public class TeamRequestDto {
+	private String nomeTeam;
+
+	public String getNomeTeam() {
+		return nomeTeam;
+	}
+
+	public void setNomeTeam(String nomeTeam) {
+		this.nomeTeam = nomeTeam;
+	}
+}

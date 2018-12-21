@@ -1,0 +1,36 @@
+package it.linksmt.teamshare.business.services.impl;
+
+import java.util.List;
+
+import it.linksmt.teamshare.business.dtos.PostDto;
+import it.linksmt.teamshare.business.request.PostRequestDto;
+import it.linksmt.teamshare.business.services.PostService;
+import it.linksmt.teamshare.entities.User;
+
+public class PostServiceImpl implements PostService {
+
+	@Override
+	public List<PostDto> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PostDto getPostByUtenteCreatore(User utenteCreatore) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PostDto addPost(PostRequestDto postRequestDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePost(Integer id) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

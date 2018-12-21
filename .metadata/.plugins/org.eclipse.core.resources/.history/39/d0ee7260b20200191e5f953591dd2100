@@ -1,0 +1,26 @@
+package it.linksmt.teamshare.business.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import it.linksmt.teamshare.business.services.TeamService;
+import it.linksmt.teamshare.entities.Team;
+import it.linksmt.teamshare.repository.TeamRepository;
+
+public class TeamServiceImpl implements TeamService {
+	@Autowired
+	TeamRepository teamRepository;
+	
+	@Override
+	public List<TeamDto> searchTeam() {
+		
+	}
+
+	@Override
+	public Team getTeam(String nomeTeam) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

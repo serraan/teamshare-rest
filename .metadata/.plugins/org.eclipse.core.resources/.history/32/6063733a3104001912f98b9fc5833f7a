@@ -1,0 +1,50 @@
+package it.linksmt.teamshare.entities;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_utente_team")
+public class UserTeam implements Serializable{
+
+	private static final long serialVersionUID = 8688329666698371783L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@ManyToMany
+	@JoinColumn(name = "id_utente")
+	private List<User> lstUtente;
+	@ManyToMany
+	@JoinColumn(name = "id_team")
+	private List<Team> lstTeam;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public List<User> getLstUtente() {
+		return lstUtente;
+	}
+	public void setLstUtente(List<User> lstUtente) {
+		this.lstUtente = lstUtente;
+	}
+	public List<Team> getLstTeam() {
+		return lstTeam;
+	}
+	public void setLstTeam(List<Team> lstTeam) {
+		this.lstTeam = lstTeam;
+	}
+	
+	
+}

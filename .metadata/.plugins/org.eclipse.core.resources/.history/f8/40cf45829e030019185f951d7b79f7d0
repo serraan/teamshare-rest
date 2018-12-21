@@ -1,0 +1,16 @@
+package it.linksmt.teamshare.business.request;
+
+import java.io.Serializable;
+
+public class CommentRequestDto implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6276587944203358614L;
+
+	private String testoCommento;
+	
+	private Integer idUtente;
+	
+}

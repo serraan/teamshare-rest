@@ -1,0 +1,7 @@
+package it.linksmt.teamshare.business.services.impl;
+
+import it.linksmt.teamshare.business.services.ContentService;
+
+public class ContentServiceImpl implements ContentService {
+
+}

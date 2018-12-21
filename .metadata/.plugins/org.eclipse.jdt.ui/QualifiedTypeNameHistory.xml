@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.business.dtos.TeamDto"/>
+<fullyQualifiedTypeName name="it.linksmt.converter.TeamConverter"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.business.services.PostService"/>
+<fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+<fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.entities.Content"/>
+<fullyQualifiedTypeName name="org.mapstruct.ap.internal.model.Mapper"/>
+<fullyQualifiedTypeName name="org.mapstruct.factory.Mappers"/>
+<fullyQualifiedTypeName name="it.linksmt.converter.CommentConverter"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="it.linksmt.teamshare.entities.Comment"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,7 @@
+package it.linksmt.teamshare.business.request;
+
+import java.io.Serializable;
+
+public class ContentDto implements Serializable {
+
+}

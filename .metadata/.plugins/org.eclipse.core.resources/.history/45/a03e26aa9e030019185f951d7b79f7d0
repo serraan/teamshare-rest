@@ -1,0 +1,7 @@
+package it.linksmt.teamshare.business.dtos;
+
+import java.io.Serializable;
+
+public class CommentDto implements Serializable {
+
+}

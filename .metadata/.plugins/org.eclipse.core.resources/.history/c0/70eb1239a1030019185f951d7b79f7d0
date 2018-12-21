@@ -1,0 +1,5 @@
+package it.linksmt.teamshare.rest.controllers;
+
+public class CommentsController {
+
+}

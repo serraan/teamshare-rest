@@ -1,0 +1,14 @@
+package it.linksmt.teamshare.rest.controllers;
+
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import io.swagger.annotations.Api;
+
+@Api(value = "Team Controller", description = "Team Controller", tags = { "Team" })
+@Controller
+@RequestMapping(name = "Team Controller",value = "/teams", produces = { MediaType.APPLICATION_JSON_VALUE })
+public class TeamsController {
+
+}

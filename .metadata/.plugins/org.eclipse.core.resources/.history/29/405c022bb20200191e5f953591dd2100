@@ -1,0 +1,14 @@
+package it.linksmt.converter;
+
+import java.util.List;
+
+import org.mapstruct.factory.Mappers;
+
+import it.linksmt.teamshare.business.dtos.TeamDto;
+import it.linksmt.teamshare.entities.Activity;
+
+public interface TeamConverter {
+	TeamConverter MAPPER = Mappers.getMapper(TeamConverter.class);
+
+	List<TeamDto> toListaTeamDTOResponse(Iterable<Activity> allTeams);
+}

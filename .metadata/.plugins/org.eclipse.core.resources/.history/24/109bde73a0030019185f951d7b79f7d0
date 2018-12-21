@@ -1,0 +1,27 @@
+package it.linksmt.teamshare.business.services.impl;
+
+import it.linksmt.teamshare.business.dtos.CommentDto;
+import it.linksmt.teamshare.business.request.CommentRequestDto;
+import it.linksmt.teamshare.business.services.CommentService;
+
+public class CommentServiceImpl implements CommentService {
+
+	@Override
+	public CommentDto addComment(CommentRequestDto comment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommentDto updateComment(Integer commId, CommentRequestDto commentReqDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteComment(Integer id) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
