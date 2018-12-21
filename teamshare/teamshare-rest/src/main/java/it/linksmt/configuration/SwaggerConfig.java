@@ -16,7 +16,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
@@ -81,6 +80,7 @@ public class SwaggerConfig {
 	}
 	
 	private ApiInfo apiInfo() {
+		@SuppressWarnings("deprecation")
 		ApiInfo apiInfo = new ApiInfo("TeamShare REST API","Servizi rest per l'applicazione TeamShare","1.0",null,null,null,null);
 		return apiInfo;
 	}

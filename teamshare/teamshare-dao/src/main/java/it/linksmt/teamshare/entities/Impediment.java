@@ -22,19 +22,19 @@ public class Impediment implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idImpediment;
-	@Column(name = "Descrizione")
+	@Column(name = "descrizione")
 	private String Descizione;
-	@Column(name = "Data")
+	@Column(name = "data")
 	private Date Data;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "FK_IdTeam")
-	private Team idTeam;
+	@JoinColumn(name = "id_team")
+	private Team team;
 	
 	@OneToOne
-	@JoinColumn(name = "FK_IdAttivita")
-	private Activity idAttivita;
+	@JoinColumn(name = "id_attivita")
+	private Activity attivita;
 	
 	public Integer getIdImpediment() {
 		return idImpediment;
@@ -54,17 +54,17 @@ public class Impediment implements Serializable{
 	public void setData(Date data) {
 		Data = data;
 	}
-	public Team getIdTeam() {
-		return idTeam;
+	public Team getTeam() {
+		return team;
 	}
-	public void setIdTeam(Team idTeam) {
-		this.idTeam = idTeam;
+	public void setIdTeam(Team team) {
+		this.team = team;
 	}
-	public Activity getIdAttivita() {
-		return idAttivita;
+	public Activity getAttivita() {
+		return attivita;
 	}
-	public void setIdAttivita(Activity idAttivita) {
-		this.idAttivita = idAttivita;
+	public void setAttivita(Activity attivita) {
+		this.attivita = attivita;
 	}
 	
 	

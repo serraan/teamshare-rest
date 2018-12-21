@@ -12,7 +12,6 @@ public class UserRequestDto implements Serializable {
 	private String email;
 	private String password;
 	private Date dataNascita;
-	
 
 	public String getNome() {
 		return nome;
@@ -41,8 +40,8 @@ public class UserRequestDto implements Serializable {
 	public Date getDataNascita() {
 		return dataNascita;
 	}
-	public void setDataNascita(Date birthDate) {
-		this.dataNascita = birthDate;
+	public void setDataNascita(Date dataNascita) {
+		this.dataNascita = dataNascita;
 	}
 	
 	

@@ -16,11 +16,11 @@ public interface UserConverter {
 
 	List<UserDto> toListUserDTO(Iterable<User> allUser);
 
-	UserDto toUserDTO(User banca);
+	UserDto toUserDTO(User user);
 	
-	User toUser(UserDto banca);
+	User toUser(UserDto userDto);
 	
-	User toUser(UserRequestDto banca);
+	User toUser(UserRequestDto userRequestDto);
    
 
 

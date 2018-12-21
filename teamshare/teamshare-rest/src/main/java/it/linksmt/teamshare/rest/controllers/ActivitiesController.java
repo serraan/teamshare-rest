@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
@@ -45,6 +46,15 @@ public class ActivitiesController {
 	public ResponseEntity<ActivityDto> getActivity(@PathVariable Integer activityId) {
 		ActivityDto att = activityService.getActivity(activityId);
 		return new ResponseEntity<ActivityDto>(att, HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Attivita By Id Utente Creatore", notes = "Servizio rest per visualizzare le attivita create da un utente", response = ActivityDto.class)
+	@ApiResponse(code = 200, message = "Attivita By Id Utente Creatore", response = ActivityDto.class)
+	@RequestMapping(value = "/idUtenteCreatore", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<ActivityDto>> getActivitiesByIdUtenteCreatore(@RequestParam(name="idUtenteCreatore") Integer idUtenteCreatore) {
+		List<ActivityDto> att = (List<ActivityDto>) activityService.getActivitiesByIdCreatore(idUtenteCreatore);
+		return new ResponseEntity<List<ActivityDto>>(att, HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Aggiungere un Attivita", notes = "Servizio rest per aggiungere un attivita", response = ActivityDto.class)

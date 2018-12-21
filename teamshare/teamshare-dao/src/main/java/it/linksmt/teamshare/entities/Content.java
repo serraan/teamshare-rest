@@ -5,14 +5,15 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +24,10 @@ public class Content implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idContenuto;
-	@Column(name = "Titolo")
+	private Integer id;
+	@Column(name = "titolo")
 	private String titolo;
-	@Column(name = "NomeFile")
+	@Column(name = "nome_file")
 	private String nomeFile;
 	@Column(name = "Formato")
 	private String formatoFile;
@@ -34,21 +35,27 @@ public class Content implements Serializable{
 	private Blob file;
 	@Column(name = "URL")
 	private Blob url;
-	@Column(name = "DataPubblicazione")
+	@Column(name = "data_pubblicazione")
 	private Date dataCondivisione;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "FK_IdUtente")
-	private User idUtenteCreatore;
-	@ManyToMany(mappedBy = "idContenuto")
-	private List<TeamContent> teamContenuto; 
+	@OneToOne
+	@JoinColumn(name = "id_utente")
+	private User utenteCreatore;
+	@OneToMany(mappedBy = "lstContenuto", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<TeamContent> lstTeamContenuto; 
 	
-	public Integer getIdContenuto() {
-		return idContenuto;
+	public List<TeamContent> getLstTeamContenuto() {
+		return lstTeamContenuto;
 	}
-	public void setIdContenuto(Integer idContenuto) {
-		this.idContenuto = idContenuto;
+	public void setLstTeamContenuto(List<TeamContent> lstTeamContenuto) {
+		this.lstTeamContenuto = lstTeamContenuto;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getTitolo() {
 		return titolo;
@@ -86,11 +93,11 @@ public class Content implements Serializable{
 	public void setDataCondivisione(Date dataCondivisione) {
 		this.dataCondivisione = dataCondivisione;
 	}
-	public User getIdUtente() {
-		return idUtenteCreatore;
+	public User getUtenteCreatore() {
+		return utenteCreatore;
 	}
-	public void setIdUtente(User idUtente) {
-		this.idUtenteCreatore = idUtente;
+	public void setUtenteCreatore(User idUtente) {
+		this.utenteCreatore = idUtente;
 	}
 	
 	

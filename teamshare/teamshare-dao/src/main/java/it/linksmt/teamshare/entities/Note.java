@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,19 +19,19 @@ public class Note implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idNota;
-	@Column(name = "Testo")
+	private Integer id;
+	@Column(name = "testo")
 	private String Testo;
 	
-	@ManyToOne
-	@JoinColumn(name = "FK_IdAttivita")
-	private Activity idAttivita;
+	@OneToOne
+	@JoinColumn(name = "id_attivita")
+	private Activity attivita;
 	
-	public Integer getIdNota() {
-		return idNota;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdNota(Integer idNota) {
-		this.idNota = idNota;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getTesto() {
 		return Testo;
@@ -39,11 +39,11 @@ public class Note implements Serializable{
 	public void setTesto(String testo) {
 		Testo = testo;
 	}
-	public Activity getIdAttivita() {
-		return idAttivita;
+	public Activity getAttivita() {
+		return attivita;
 	}
-	public void setIdAttivita(Activity idAttivita) {
-		this.idAttivita = idAttivita;
+	public void setAttivita(Activity attivita) {
+		this.attivita = attivita;
 	}
 	
 	

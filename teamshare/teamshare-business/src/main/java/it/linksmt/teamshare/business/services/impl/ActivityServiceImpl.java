@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.linksmt.converter.ActivityConverter;
 import it.linksmt.teamshare.business.dtos.ActivityDto;
@@ -14,6 +16,7 @@ import it.linksmt.teamshare.entities.Activity;
 import it.linksmt.teamshare.repository.ActivityRepository;
 
 @Service
+@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
 public class ActivityServiceImpl implements ActivityService {
 
 	@Autowired
@@ -44,7 +47,7 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public ActivityDto updateActivity(Integer attid,ActivityRequestDto att) {
 		Activity a = ActivityConverter.MAPPER.toActivity(att);
-		a.setIdAttivita(attid);
+		a.setId(attid);
 		a = activityRepository.save(a);
 		return ActivityConverter.MAPPER.toActivityDTO(a);
 	}
@@ -52,6 +55,12 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public void deleteActivity(Integer id) {
 		activityRepository.deleteById(id);
+	}
+
+	@Override
+	public List<ActivityDto> getActivitiesByIdCreatore(Integer idUtenteCreatore) {
+		List<Activity> activities = activityRepository.findByIdUtenteCreatore(idUtenteCreatore);
+		return ActivityConverter.MAPPER.toListaAttivitaDTOResponse(activities);
 	}
 
 }

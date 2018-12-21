@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
-
 import it.linksmt.teamshare.business.dtos.PostDto;
 import it.linksmt.teamshare.business.request.PostRequestDto;
 import it.linksmt.teamshare.business.services.PostService;
@@ -37,6 +37,14 @@ public class PostsController {
 		return new ResponseEntity<List<PostDto>>(posts, HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Lista post di un utente", notes = "Servizio rest per visualizzare tutti post relativi ad un utente", response = PostDto.class)
+	@ApiResponse(code = 200, message = "Lista post di un utente", response = PostDto.class)
+	@RequestMapping(value = "/id", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<PostDto>> getPostsByUser(@RequestParam(name="id") Integer id) {
+		List<PostDto> posts = postService.getByCreatorUser(id);
+		return new ResponseEntity<List<PostDto>>(posts, HttpStatus.OK);
+	}
 	@ApiOperation(value = "Aggiungere un post", notes = "Servizio rest per aggiungere un post", response = PostDto.class)
 	@ApiResponse(code = 200, message = "Aggiungere un post", response = PostDto.class)
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -55,4 +63,14 @@ public class PostsController {
 			postService.deletePost(postId);
 		}
 	}
+	
+	@ApiOperation(value = "Aggiorna un post", notes = "Servizio rest per aggiornare un post", response = PostDto.class)
+	@ApiResponse(code = 200, message = "Aggiorna un post", response = PostDto.class)
+	@RequestMapping(value = "/{postId}", method = RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<PostDto> updateAct(@PathVariable("postId") int postId,@RequestBody PostRequestDto post) {
+		PostDto p = postService.updatePost(postId , post);
+		return new ResponseEntity<PostDto>(p, HttpStatus.OK);
+	}
+
 }

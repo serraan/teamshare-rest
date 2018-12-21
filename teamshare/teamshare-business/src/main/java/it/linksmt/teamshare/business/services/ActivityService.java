@@ -8,6 +8,7 @@ import it.linksmt.teamshare.business.request.ActivityRequestDto;
 
 public interface ActivityService {
 
+	public List<ActivityDto> getActivitiesByIdCreatore(Integer idUtenteCreatore);
 	public List<ActivityDto> searchActivity();
 	public ActivityDto getActivity(Integer id);
 	public ActivityDto addActivity(ActivityRequestDto att);

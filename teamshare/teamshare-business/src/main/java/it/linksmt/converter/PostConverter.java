@@ -17,13 +17,13 @@ public interface PostConverter {
 
 	List<PostDto> toListaPostDTOResponse(Iterable<Post> allPosts);
 
-	 @Mapping(target = "idUtente", source = "utenteCreatore.idUtente")
+	 @Mapping(target = "idUtente", source = "utenteCreatore.id")
 	 PostDto toPostDto(Post post);
 
-	@Mapping(target = "utenteCreatore.idUtente", source = "idUtente")
+	@Mapping(target = "utenteCreatore.id", source = "idUtente")
 	Post toPost(PostDto postDto);
 
-	@Mapping(target = "utenteCreatore.idUtente", source = "idUtente")
+	@Mapping(target = "utenteCreatore.id", source = "idUtente")
 	 Post toPost(PostRequestDto postRequestDto);
 
 }

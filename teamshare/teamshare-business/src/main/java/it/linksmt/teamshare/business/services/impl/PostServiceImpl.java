@@ -43,4 +43,20 @@ public class PostServiceImpl implements PostService {
 
 	}
 
+	@Override
+	public PostDto updatePost(Integer postId, PostRequestDto post) {
+		Post p = PostConverter.MAPPER.toPost(post);
+		p.setId(postId);
+		p = postRepository.save(p);
+		return PostConverter.MAPPER.toPostDto(p);
+	}
+
+	@Override
+	public List<PostDto> getByCreatorUser(Integer idUser) {
+		List<Post> posts = (List<Post>) postRepository.findAllByIdUtente(idUser);
+	// LIST USING STREAM METHOD	
+	//	posts = posts.stream().filter(post -> post.getUtenteCreatore().getId() == idUser).collect(Collectors.toList());
+		return PostConverter.MAPPER.toListaPostDTOResponse(posts);
+	}
+
 }

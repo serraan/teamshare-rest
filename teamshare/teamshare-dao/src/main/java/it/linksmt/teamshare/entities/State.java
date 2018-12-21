@@ -3,12 +3,13 @@ package it.linksmt.teamshare.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,18 +20,24 @@ public class State implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idStato;
-	@Column(name = "Nome")
+	private Integer id;
+	@Column(name = "nome")
 	private String nomeStato;
 	
-	@ManyToMany(mappedBy = "idStato")
-	private List<ActivityState> activityState;
+	@OneToMany(mappedBy = "lstStato", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<ActivityState> lstActivityState;
 	
-	public Integer getId() {
-		return idStato;
+	public List<ActivityState> getLstActivityState() {
+		return lstActivityState;
 	}
-	public void setId(Integer idStato) {
-		this.idStato = idStato;
+	public void setLstActivityState(List<ActivityState> lstActivityState) {
+		this.lstActivityState = lstActivityState;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getNomeStato() {
 		return nomeStato;

@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto updateUser(Integer userId, UserRequestDto user) {
 		User u = UserConverter.MAPPER.toUser(user);
-		u.setIdUtente(userId);
+		u.setId(userId);
 		u = userRepository.save(u);
 		return UserConverter.MAPPER.toUserDTO(u);
 	}

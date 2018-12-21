@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,12 +21,12 @@ public class TeamContent implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer IdContenutoTeam;
 	
-	@ManyToMany
-	@JoinColumn(name = "FK_IdTeam")
-	private List<Team> idTeam;
-	@ManyToMany
-	@JoinColumn(name = "FK_IdContenuto")
-	private List<Content> idContenuto;
+	@ManyToOne(targetEntity=Team.class)
+	@JoinColumn(name = "id_team")
+	private List<Team> lstTeam;
+	@ManyToOne(targetEntity=Content.class)
+	@JoinColumn(name = "id_contenuto")
+	private List<Content> lstContenuto;
 	
 	public Integer getIdContenutoTeam() {
 		return IdContenutoTeam;
@@ -34,17 +34,17 @@ public class TeamContent implements Serializable{
 	public void setIdContenutoTeam(Integer idContenutoTeam) {
 		IdContenutoTeam = idContenutoTeam;
 	}
-	public List<Team> getIdTeam() {
-		return idTeam;
+	public List<Team> getLstTeam() {
+		return lstTeam;
 	}
-	public void setIdTeam(List<Team> idTeam) {
-		this.idTeam = idTeam;
+	public void setLstTeam(List<Team> lstTeam) {
+		this.lstTeam = lstTeam;
 	}
-	public List<Content> getIdContenuto() {
-		return idContenuto;
+	public List<Content> getLstContenutoo() {
+		return lstContenuto;
 	}
-	public void setIdContenuto(List<Content> idContenuto) {
-		this.idContenuto = idContenuto;
+	public void setLstContenuto(List<Content> lstContenuto) {
+		this.lstContenuto = lstContenuto;
 	}
 	
 }

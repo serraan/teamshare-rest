@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,35 +21,38 @@ public class Activity implements Serializable{
 
 	private static final long serialVersionUID = 877546176463513619L;
 
+
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "IdAttivita")
-	private Integer idAttivita;
-	@Column(name = "Titolo")
+	private Integer id;
+	
+	@Column(name = "titolo")
 	private String titolo;
-	@Column(name = "Descrizione")
+	
+	@Column(name = "descrizione")
 	private String descrizione;
-	@Column(name = "Tipo")
-	private String Tipo;
-	@Column(name = "Priorita")
-	private String Priorita;
+	
+	@Column(name = "tipo")
+	private String tipo;
+	
+	@Column(name = "priorita")
+	private String priorita;
+	
+	@Column(name = "data_presa_in_carico")
+	private Date dataPresaIncarico;
+
 	@OneToOne
-	@JoinColumn(name = "FK_IdUtenteCreatore")
+	@JoinColumn(name = "id_utente_creatore")
 	private User utenteCreatore;
+	
 	@OneToOne
-	@JoinColumn(name = "FK_IdUtenteAssegnatario")
+	@JoinColumn(name = "id_utente_assegnatario")
 	private User utenteAssegnatario;
-	@Column(name = "DataPresaIncarico")
-	private Date dataPresaCarico;
 	
-	
-	@ManyToMany(mappedBy = "idAttivita")
-	private List<ActivityState> activityState;
-	@ManyToMany(mappedBy = "idAttivita")
-	private List<ActivitySprint> activitySprint;
-	@OneToMany(mappedBy = "idAttivita")
-	private List<Note> note;
-	
+	@OneToMany(mappedBy = "activity" , cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<ActivitySprint> lstActivitySprint;
+
 	public User getUtenteCreatore() {
 		return utenteCreatore;
 	}
@@ -62,11 +65,11 @@ public class Activity implements Serializable{
 	public void setUtenteAssegnatario(User utenteAssegnatario) {
 		this.utenteAssegnatario = utenteAssegnatario;
 	}
-	public Integer getIdAttivita() {
-		return idAttivita;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdAttivita(Integer idAttivita) {
-		this.idAttivita = idAttivita;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getTitolo() {
 		return titolo;
@@ -81,23 +84,23 @@ public class Activity implements Serializable{
 		this.descrizione = descrizione;
 	}
 	public String getTipo() {
-		return Tipo;
+		return tipo;
 	}
 	public void setTipo(String tipo) {
-		Tipo = tipo;
+		this.tipo = tipo;
 	}
 	public String getPriorita() {
-		return Priorita;
+		return priorita;
 	}
 	public void setPriorita(String priorita) {
-		Priorita = priorita;
+		this.priorita = priorita;
 	}
 
 	public Date getDataPresaCarico() {
-		return dataPresaCarico;
+		return dataPresaIncarico;
 	}
 	public void setDataPresaCarico(Date dataPresaIncarico) {
-		this.dataPresaCarico = dataPresaIncarico;
+		this.dataPresaIncarico = dataPresaIncarico;
 	}
 	
 	

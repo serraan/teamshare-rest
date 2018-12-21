@@ -3,12 +3,13 @@ package it.linksmt.teamshare.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,20 +20,20 @@ public class Type implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idTipo;
-	@Column(name = "Nome")
+	private Integer id;
+	@Column(name = "nome")
 	private String nomeTipo;
-	@Column(name = "PathImmagine")
+	@Column(name = "path_immagine")
 	private String pathImmagine;
 	
-	@ManyToMany(mappedBy = "idTipo")
+	@OneToMany(mappedBy = "lstTipo", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Reaction> reazione;
 	
 	public Integer getId() {
-		return idTipo;
+		return id;
 	}
-	public void setId(Integer idTipo) {
-		this.idTipo = idTipo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getNomeTipo() {
 		return nomeTipo;

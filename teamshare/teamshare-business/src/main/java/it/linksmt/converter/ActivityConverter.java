@@ -18,16 +18,16 @@ public interface ActivityConverter {
 
 	List<ActivityDto> toListaAttivitaDTOResponse(Iterable<Activity> allActivities);
 
-	@Mappings({ @Mapping(target = "idUtenteCreatore", source = "utenteCreatore.idUtente"),
-			@Mapping(target = "idUtenteAssegnatario", source = "utenteAssegnatario.idUtente") })
+	@Mappings({ @Mapping(target = "idUtenteCreatore", source = "utenteCreatore.id"),
+			@Mapping(target = "idUtenteAssegnatario", source = "utenteAssegnatario.id") })
 	ActivityDto toActivityDTO(Activity activity);
 
-	@Mappings({ @Mapping(target = "utenteCreatore.idUtente", source = "idUtenteCreatore"),
-	@Mapping(target = "utenteAssegnatario.idUtente", source = "idUtenteAssegnatario")})
+	@Mappings({ @Mapping(target = "utenteCreatore.id", source = "idUtenteCreatore"),
+	@Mapping(target = "utenteAssegnatario.id", source = "idUtenteAssegnatario")})
 	Activity toActivity(ActivityDto activityDto);
 
-	@Mappings({ @Mapping(target = "utenteCreatore.idUtente", source = "idUtenteCreatore"),
-	@Mapping(target = "utenteAssegnatario.idUtente", source = "idUtenteAssegnatario")})
+	@Mappings({ @Mapping(target = "utenteCreatore.id", source = "idUtenteCreatore"),
+	@Mapping(target = "utenteAssegnatario.id", source = "idUtenteAssegnatario")})
 	Activity toActivity(ActivityRequestDto activityRequestDto);
 
 }

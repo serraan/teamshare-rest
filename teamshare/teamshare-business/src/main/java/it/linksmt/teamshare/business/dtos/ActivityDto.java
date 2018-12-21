@@ -7,21 +7,21 @@ import it.linksmt.teamshare.business.request.ActivityRequestDto;
 public class ActivityDto extends ActivityRequestDto implements Serializable {
 	
 	private static final long serialVersionUID = -1988497334387154529L;
-	private Integer idAttivita;
+	private Integer id;
 	
 	
-	public Integer getIdAttivita() {
-		return idAttivita;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdAttivita(Integer id) {
-		this.idAttivita = id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {
-		return "ActivityDto [id=" + getIdAttivita() + ", getTitolo()=" + getTitolo() + ", getDescrizione()="
+		return "ActivityDto [id=" + getId() + ", getTitolo()=" + getTitolo() + ", getDescrizione()="
 				+ getDescrizione() + ", getTipo()=" + getTipo() + ", getPriorita()=" + getPriorita()
 				+ ", getIdUtenteCreatore()=" + getIdUtenteCreatore() + ", getIdUtenteAssegnatario()="
-				+ getIdUtenteAssegnatario() + ", getDataPresaCarico()=" + getDataPresaCarico() + "]";
+				+ getIdUtenteAssegnatario() + ", getDataPresaCarico()=" + getDataPresaIncarico() + "]";
 	}
 
 }

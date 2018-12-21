@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -22,16 +22,16 @@ public class ActivityState implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer IdAttivitaStato;
-	@Column(name = "DataInizio")
+	@Column(name = "data_inizio")
 	private Date dataInizio;
-	@Column(name = "DataFine")
+	@Column(name = "data_fine")
 	private Date dataFine;
-	@ManyToMany
-	@JoinColumn(name = "FK_IdAttivita")
-	private List<Activity> idAttivita;
-	@ManyToMany
-	@JoinColumn(name = "FK_IdStato")
-	private List<State> idStato;
+	@ManyToOne(targetEntity=Activity.class)
+	@JoinColumn(name = "id_attivita")
+	private List<Activity> lstAttivita;
+	@ManyToOne(targetEntity=State.class)
+	@JoinColumn(name = "id_stato")
+	private List<State> lstStato;
 	
 	public Integer getIdAttivitaStato() {
 		return IdAttivitaStato;
@@ -51,17 +51,17 @@ public class ActivityState implements Serializable {
 	public void setDataFine(Date dataFine) {
 		this.dataFine = dataFine;
 	}
-	public List<Activity> getIdAttivita() {
-		return idAttivita;
+	public List<Activity> getLstAttivita() {
+		return lstAttivita;
 	}
-	public void setIdAttivita(List<Activity> idAttivita) {
-		this.idAttivita = idAttivita;
+	public void setLstAttivita(List<Activity> lstAttivita) {
+		this.lstAttivita = lstAttivita;
 	}
-	public List<State> getIdStato() {
-		return idStato;
+	public List<State> getLstStato() {
+		return lstStato;
 	}
-	public void setIdStato(List<State> idStato) {
-		this.idStato = idStato;
+	public void setLstStato(List<State> lstStato) {
+		this.lstStato = lstStato;
 	}
 	
 }

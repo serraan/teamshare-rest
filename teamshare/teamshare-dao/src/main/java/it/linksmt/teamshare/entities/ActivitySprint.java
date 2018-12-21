@@ -1,52 +1,62 @@
 package it.linksmt.teamshare.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_attivita_sprint")
-public class ActivitySprint implements Serializable{
+	@Table(name = "tb_attivita_sprint")
+	public class ActivitySprint implements Serializable{
 
-	private static final long serialVersionUID = 1100015012130654286L;
+		private static final long serialVersionUID = 1100015012130654286L;
 
-	@ManyToMany
-	@JoinColumn(name = "FK_IdAttivita")
-	private List<Activity> idAttivita;
-	
-	@ManyToMany
-	@JoinColumn(name = "FK_IdSprint")
-	private List<Sprint> idSprint;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer idAttivitaSprint;
-	
-	public List<Activity> getIdAttivita() {
-		return idAttivita;
-	}
-	public void setIdAttivita(List<Activity> idAttivita) {
-		this.idAttivita = idAttivita;
-	}
-	public List<Sprint> getIdSprint() {
-		return idSprint;
-	}
-	public void setIdSprint(List<Sprint> idSprint) {
-		this.idSprint = idSprint;
-	}
-	public Integer getIdAttivitaSprint() {
-		return idAttivitaSprint;
-	}
-	public void setIdAttivitaSprint(Integer idAttivitaSprint) {
-		this.idAttivitaSprint = idAttivitaSprint;
-	}
-	
-	
-}
+		@Id
+		@Column(name = "id")
+		@GeneratedValue(strategy=GenerationType.AUTO)
+		private Integer id;
+		
+		@ManyToOne(targetEntity=Activity.class)
+		@JoinColumn(name = "id_attivita")
+		private Activity activity;
+		
+		@ManyToOne(targetEntity=Sprint.class)
+		@JoinColumn(name = "id_sprint")
+		private Sprint sprint;
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public Activity getActivity() {
+			return activity;
+		}
+
+		public void setActivity(Activity activity) {
+			this.activity = activity;
+		}
+
+		public Sprint getSprint() {
+			return sprint;
+		}
+
+		public void setSprint(Sprint sprint) {
+			this.sprint = sprint;
+		}
+		
+		
+		
+		
+		
+}	
+

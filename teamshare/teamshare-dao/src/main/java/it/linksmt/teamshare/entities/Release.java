@@ -1,14 +1,12 @@
 package it.linksmt.teamshare.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,12 +18,8 @@ public class Release implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idRelease;
-	@Column(name = "Nome")
+	@Column(name = "nome")
 	private String nomeRelease;
-	
-	@OneToMany(mappedBy = "idRelease")
-	private List<Sprint> sprint;
-	
 	public Integer getIdRelease() {
 		return idRelease;
 	}

@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,28 +23,28 @@ public class Post implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idPost;
-	@Column(name = "Titolo")
+	private Integer id;
+	@Column(name = "titolo")
 	private String titoloPost;
-	@Column(name = "Descrizione")
+	@Column(name = "descrizione")
 	private String descrizionePost;
-	@Column(name = "Riferimento")
+	@Column(name = "riferimento")
 	private String riferimentoPost;
 	
-	@ManyToOne
-	@JoinColumn(name = "FK_IdUtente")
+	@OneToOne
+	@JoinColumn(name = "id_utente")
 	private User utenteCreatore;
-	@Column(name = "DataPubblicazione")
+	@Column(name = "data_pubblicazione")
 	private Date dataPost;
 	
-	@OneToMany(mappedBy = "idPost")
+	@OneToMany(mappedBy = "post", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Comment> commento;
 	
-	public Integer getIdPost() {
-		return idPost;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdPost(Integer idPost) {
-		this.idPost = idPost;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getTitoloPost() {
 		return titoloPost;

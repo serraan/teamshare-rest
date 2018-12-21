@@ -8,48 +8,53 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_reazione")
+@Table(name = "tb_utente_tipo_contenuto")
 public class Reaction implements Serializable{
 
 	private static final long serialVersionUID = 4851689194389277202L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer IdReazione;
+	private Integer id;
 	
 	
-	@ManyToMany
-	@JoinColumn(name = "idUtente")
-	private List<User> idUtente;
-	@ManyToMany
-	@JoinColumn(name = "FK_IdContenuto")
-	private List<Content> idContenuto;
-	@ManyToMany
-	@JoinColumn(name = "FK_IdTipo")
-	private List<Type> idTipo;
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name = "id_utente")
+	private List<User> lstUtente;
+	@ManyToOne(targetEntity =  Content.class)
+	@JoinColumn(name = "id_contenuto")
+	private List<Content> lstContenuto;
+	@ManyToOne(targetEntity=Type.class)
+	@JoinColumn(name = "id_tipo")
+	private List<Type> lstTipo;
 	
-	public List<User> getIdUtente() {
-		return idUtente;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdUtente(List<User> idUtente) {
-		this.idUtente = idUtente;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public List<Content> getIdContenuto() {
-		return idContenuto;
+	public List<User> getLstUtente() {
+		return lstUtente;
 	}
-	public void setIdContenuto(List<Content> idContenuto) {
-		this.idContenuto = idContenuto;
+	public void setLstUtente(List<User> lstUtente) {
+		this.lstUtente = lstUtente;
 	}
-	public List<Type> getIdTipo() {
-		return idTipo;
+	public List<Content> getLstContenuto() {
+		return lstContenuto;
 	}
-	public void setIdTipo(List<Type> idTipo) {
-		this.idTipo = idTipo;
+	public void setLstContenuto(List<Content> lstContenuto) {
+		this.lstContenuto = lstContenuto;
+	}
+	public List<Type> getLstTipo() {
+		return lstTipo;
+	}
+	public void setLstTipo(List<Type> lstTipo) {
+		this.lstTipo = lstTipo;
 	}
 	
 }

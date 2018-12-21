@@ -3,7 +3,6 @@ package it.linksmt.teamshare.business.request;
 import java.io.Serializable;
 import java.util.Date;
 
-import it.linksmt.teamshare.entities.User;
 
 public class PostRequestDto implements Serializable {
 

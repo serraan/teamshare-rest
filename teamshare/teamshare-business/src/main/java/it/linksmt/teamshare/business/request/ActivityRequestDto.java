@@ -13,7 +13,7 @@ public class ActivityRequestDto implements Serializable{
 	private String priorita;
 	private Integer idUtenteCreatore;
 	private Integer idUtenteAssegnatario;
-	private Date dataPresaCarico;
+	private Date dataPresaIncarico;
 	
 	public String getTitolo() {
 		return titolo;
@@ -51,11 +51,11 @@ public class ActivityRequestDto implements Serializable{
 	public void setIdUtenteAssegnatario(Integer idUtenteAssegnatario) {
 		this.idUtenteAssegnatario = idUtenteAssegnatario;
 	}
-	public Date getDataPresaCarico() {
-		return dataPresaCarico;
+	public Date getDataPresaIncarico() {
+		return dataPresaIncarico;
 	}
-	public void setDataPresaCarico(Date dataPresaCarico) {
-		this.dataPresaCarico = dataPresaCarico;
+	public void setDataPresaIncarico(Date dataPresaIncarico) {
+		this.dataPresaIncarico = dataPresaIncarico;
 	}
 	
 }

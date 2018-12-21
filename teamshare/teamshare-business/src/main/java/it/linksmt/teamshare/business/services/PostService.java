@@ -10,5 +10,7 @@ public interface PostService {
 	public List<PostDto> getAll();
 	public PostDto getPostByUtenteCreatore(User utenteCreatore);
 	public PostDto addPost(PostRequestDto postRequestDto);
+	public PostDto updatePost(Integer postId, PostRequestDto post);
 	public void deletePost(Integer id);
+	public List<PostDto> getByCreatorUser(Integer idUser);
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
-import it.linksmt.teamshare.business.dtos.ActivityDto;
 import it.linksmt.teamshare.business.dtos.TeamDto;
 import it.linksmt.teamshare.business.request.TeamRequestDto;
 import it.linksmt.teamshare.business.services.TeamService;

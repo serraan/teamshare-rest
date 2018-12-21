@@ -8,17 +8,17 @@ public class UserDto extends UserRequestDto implements Serializable {
 
 	private static final long serialVersionUID = 5977013417767148380L;
 	
-	private Integer idUtente;
+	private Integer id;
 	
-	public Integer getIdUtente() {
-		return idUtente;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdUtente(Integer id) {
-		this.idUtente = id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {
-		return "UserDto [id=" + idUtente + ", getNome()=" + getNome() + ", getCognome()=" + getCognome()
+		return "UserDto [id=" + getId() + ", getNome()=" + getNome() + ", getCognome()=" + getCognome()
 				+ ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword() + ", getBirthDate()="
 				+ getDataNascita() + "]";
 	}
