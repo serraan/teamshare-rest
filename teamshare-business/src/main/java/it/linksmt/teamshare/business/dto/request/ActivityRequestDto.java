@@ -2,92 +2,81 @@ package it.linksmt.teamshare.business.dto.request;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import it.linksmt.teamshare.business.dtos.SprintDto;
 
 public class ActivityRequestDto implements Serializable {
-	
+
 	private static final long serialVersionUID = -298763132072447661L;
-	
-	private String titolo;
-	
-	private String descrizione;
-	
-	private String tipo;
-	
-	private String priorita;
-	
-	private Date dataPresaIncarico;
 
-	private Integer idUtenteCreatore;
-	
-	private Integer idUtenteAssegnatario;
-	
-	private List<SprintDto> sprints;
+	private String title;
+	private String description;
+	private String type;
+	private String priority;
+	private Date dateTakenIntoCharge;
 
-	public String getTitolo() {
-		return titolo;
+	private Integer idUserCreator;
+	private Integer idUserAssignee;
+
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDescrizione() {
-		return descrizione;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getType() {
+		return type;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getPriorita() {
-		return priorita;
+	public String getPriority() {
+		return priority;
 	}
 
-	public void setPriorita(String priorita) {
-		this.priorita = priorita;
+	public void setPriority(String priority) {
+		this.priority = priority;
 	}
 
-	public Date getDataPresaIncarico() {
-		return dataPresaIncarico;
+	public Date getDateTakenIntoCharge() {
+		return dateTakenIntoCharge;
 	}
 
-	public void setDataPresaIncarico(Date dataPresaIncarico) {
-		this.dataPresaIncarico = dataPresaIncarico;
+	public void setDateTakenIntoCharge(Date dateTakenIntoCharge) {
+		this.dateTakenIntoCharge = dateTakenIntoCharge;
 	}
 
-	public Integer getIdUtenteCreatore() {
-		return idUtenteCreatore;
+	public Integer getIdUserCreator() {
+		return idUserCreator;
 	}
 
-	public void setIdUtenteCreatore(Integer idUtenteCreatore) {
-		this.idUtenteCreatore = idUtenteCreatore;
+	public void setIdUserCreator(Integer idUserCreator) {
+		this.idUserCreator = idUserCreator;
 	}
 
-	public Integer getIdUtenteAssegnatario() {
-		return idUtenteAssegnatario;
+	public Integer getIdUserAssignee() {
+		return idUserAssignee;
 	}
 
-	public void setIdUtenteAssegnatario(Integer idUtenteAssegnatario) {
-		this.idUtenteAssegnatario = idUtenteAssegnatario;
+	public void setIdUserAssignee(Integer idUserAssignee) {
+		this.idUserAssignee = idUserAssignee;
 	}
 
-	public List<SprintDto> getSprints() {
-		return sprints;
-	}
-
-	public void setSprints(List<SprintDto> sprints) {
-		this.sprints = sprints;
+	@Override
+	public String toString() {
+		return "ActivityRequestDto [title=" + title + ", description=" + description + ", type=" + type + ", priority="
+				+ priority + ", dateTakenIntoCharge=" + dateTakenIntoCharge + ", idUserCreator=" + idUserCreator
+				+ ", idUserAssignee=" + idUserAssignee + "]";
 	}
 
 }

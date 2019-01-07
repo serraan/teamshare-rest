@@ -6,11 +6,8 @@ import it.linksmt.teamshare.business.dto.request.CommentRequestDto;
 
 public class CommentDto extends CommentRequestDto implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6563813495101240589L;
-	
+
 	private Integer id;
 
 	public Integer getId() {
@@ -20,13 +17,5 @@ public class CommentDto extends CommentRequestDto implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	@Override
-	public String toString() {
-		return "CommentDto [id=" + id + ", getId()=" + getId() + ", getTestoCommento()=" + getTestoCommento()
-				+ ", getIdPost()=" + getIdPost() + ", getIdUtente()=" + getIdUtente() + ", getDataPubblicazione()="
-				+ getDataPubblicazione() + "]";
-	}
-
-
+	
 }

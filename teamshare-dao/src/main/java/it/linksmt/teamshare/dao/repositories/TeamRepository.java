@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import it.linksmt.teamshare.dao.entities.Team;
 
 @Repository
-public interface TeamRepository extends CrudRepository<Team, Integer> {
+public interface TeamRepository  extends CrudRepository<Team, Integer> {
 
 }

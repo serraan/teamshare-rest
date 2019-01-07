@@ -11,32 +11,32 @@ import it.linksmt.teamshare.business.dto.request.UserTypeContentRequestDto;
 import it.linksmt.teamshare.business.dtos.UserTypeContentDto;
 import it.linksmt.teamshare.dao.entities.UserTypeContent;
 
-
 @Mapper
 public interface UserTypeContentConverter {
 
 	UserTypeContentConverter MAPPER = Mappers.getMapper(UserTypeContentConverter.class);
 
-	List<UserTypeContentDto> toListUserTypeContentDTO(Iterable<UserTypeContent> allUserTypeContent);
+	List<UserTypeContentDto> toListUserTypeContentDto(Iterable<UserTypeContent> userTypeContents);
 
 	@Mappings({
-		@Mapping(target = "idUser", source = "idUser.id"),
-		@Mapping(target = "idType", source = "idType.id"),
-		@Mapping(target = "idContent", source = "idContent.id")
+		@Mapping(target = "idUser", source = "user.id"),
+		@Mapping(target = "idType", source = "type.id"),
+		@Mapping(target = "idContent", source = "content.id")
 	})
-	UserTypeContentDto toUserTypeContentDTO(UserTypeContent userTypeContent);
-	
+	UserTypeContentDto toUserTypeContentDto(UserTypeContent userTypeContent);
+
 	@Mappings({
-		@Mapping(target = "idUser.id", source = "idUser"),
-		@Mapping(target = "idType.id", source = "idType"),
-		@Mapping(target = "idContent.id", source = "idContent")
+		@Mapping(target = "user.id", source = "idUser"),
+		@Mapping(target = "type.id", source = "idType"),
+		@Mapping(target = "content.id", source = "idContent")
 	})
 	UserTypeContent toUserTypeContent(UserTypeContentDto userTypeContentDto);
-	
+
 	@Mappings({
-		@Mapping(target = "idUser.id", source = "idUser"),
-		@Mapping(target = "idType.id", source = "idType"),
-		@Mapping(target = "idContent.id", source = "idContent")
+		@Mapping(target = "user.id", source = "idUser"),
+		@Mapping(target = "type.id", source = "idType"),
+		@Mapping(target = "content.id", source = "idContent")
 	})
 	UserTypeContent toUserTypeContent(UserTypeContentRequestDto userTypeContentRequestDto);
+	
 }

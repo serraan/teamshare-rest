@@ -17,42 +17,52 @@ import it.linksmt.teamshare.dao.repositories.StateRepository;
 
 @Service
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
-public class StateServiceImpl implements StateService{
+public class StateServiceImpl implements StateService {
 
 	@Autowired
 	private StateRepository stateRepository;
-	
+
 	@Override
 	public List<StateDto> getStates() {
-		List<State> stateDtos= (List<State>) stateRepository.findAll();
-		return StateConverter.MAPPER.toListStateDto(stateDtos);
+
+		List<State> states = (List<State>) stateRepository.findAll();
+		
+		return StateConverter.MAPPER.toListStateDto(states);
 	}
 
 	@Override
-	public StateDto getState(Integer id) {
-		Optional<State> state= stateRepository.findById(id);
+	public StateDto getState(Integer stateId) {
+
+		Optional<State> state = stateRepository.findById(stateId);
+
 		return StateConverter.MAPPER.toStateDto(state.get());
 	}
 
 	@Override
 	public StateDto addState(StateRequestDto stateRequestDto) {
-		State state= StateConverter.MAPPER.toState(stateRequestDto);
-		state= stateRepository.save(state);
+
+		State state = StateConverter.MAPPER.toState(stateRequestDto);
+		
+		state = stateRepository.save(state);
+		
 		return StateConverter.MAPPER.toStateDto(state);
 	}
 
 	@Override
 	public StateDto updateState(Integer stateId, StateRequestDto stateRequestDto) {
-		State state= StateConverter.MAPPER.toState(stateRequestDto);
+
+		State state = StateConverter.MAPPER.toState(stateRequestDto);
 		state.setId(stateId);
-		state= stateRepository.save(state);
+		
+		state = stateRepository.save(state);
+
 		return StateConverter.MAPPER.toStateDto(state);
 	}
 
 	@Override
-	public void deleteState(Integer id) {
-		stateRepository.deleteById(id);
-		
-	}
+	public void deleteState(Integer stateId) {
 
+		stateRepository.deleteById(stateId);
+	}
+	
 }

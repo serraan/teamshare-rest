@@ -43,7 +43,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
-		
+
 		<!-- Swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -66,8 +66,11 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<webappDirectory>C:\tomcat\webapps</webappDirectory>
+					<webappDirectory>C:\tomcat\webapps\teamshare-rest\</webappDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

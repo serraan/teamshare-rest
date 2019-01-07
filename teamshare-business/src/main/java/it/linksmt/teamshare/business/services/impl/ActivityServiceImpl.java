@@ -25,19 +25,11 @@ public class ActivityServiceImpl implements ActivityService {
 	private ActivityRepository activityRepository;
 
 	@Override
-	public List<ActivityDto> searchActivities(String title, String description, String type, String priority) {
-		
-		List<Activity> activities = (List<Activity>) activityRepository.findAll();
-		
-		return ActivityConverter.MAPPER.toListActivityDTO(activities);
-	}
-
-	@Override
 	public List<ActivityDto> getActivities() {
 		
 		List<Activity> activities = (List<Activity>) activityRepository.findAll();
 		
-		return ActivityConverter.MAPPER.toListActivityDTO(activities);
+		return ActivityConverter.MAPPER.toListActivityDto(activities);
 	}
 
 	@Override
@@ -59,16 +51,12 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 	@Override
-	public ActivityDto updateActivity(Integer id, ActivityRequestDto activityRequestDto) {
+	public ActivityDto updateActivity(Integer activityId, ActivityRequestDto activityRequestDto) {
 		
 		Activity activity = ActivityConverter.MAPPER.toActivity(activityRequestDto);
+		activity.setId(activityId);
 		
-		activity.setId(id);
-		
-//		activity.setUserAssignee(userRepository.findById(activityRequestDto.getIdUserAssignee()).get());
-//		activity.setUserCreator(userRepository.findById(activityRequestDto.getIdUserCreator()).get());
-		
-		activityRepository.save(activity);
+		activity = activityRepository.save(activity);
 
 		return ActivityConverter.MAPPER.toActivityDTO(activity);
 	}
@@ -79,10 +67,4 @@ public class ActivityServiceImpl implements ActivityService {
 		activityRepository.deleteById(id);
 	}
 
-	@Override
-		public List<ActivityDto> getActivitiesByIdCreatore(Integer idUtenteCreatore) {
-			List<Activity> activities = activityRepository.findByIdUtenteCreatore(idUtenteCreatore);
-			return ActivityConverter.MAPPER.toListActivityDTO(activities);
-		}
-	}
-
+}

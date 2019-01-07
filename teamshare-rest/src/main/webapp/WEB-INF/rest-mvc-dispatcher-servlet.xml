@@ -18,8 +18,7 @@
 
 	<import resource="classpath:teamshare-business-context.xml" />
 
-	<context:component-scan
-		base-package="it.linksmt.teamshare.rest.controllers" />
+	<context:component-scan base-package="it.linksmt.teamshare.rest.controllers" />
 
 	<bean id="contentNegotiationManager"
 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">

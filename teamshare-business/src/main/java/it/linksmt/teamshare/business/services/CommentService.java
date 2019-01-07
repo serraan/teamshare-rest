@@ -6,10 +6,15 @@ import it.linksmt.teamshare.business.dto.request.CommentRequestDto;
 import it.linksmt.teamshare.business.dtos.CommentDto;
 
 public interface CommentService {
-	
-	public CommentDto addComment(CommentRequestDto comment);
-	public CommentDto updateComment(Integer commId, CommentRequestDto commentReqDto);
+
+	public List<CommentDto> getComments();
+
+	public CommentDto getComment(Integer id);
+
+	public CommentDto addComment(CommentRequestDto commentRequestDto);
+
+	public CommentDto updateComment(Integer commentId, CommentRequestDto commentRequestDto);
+
 	public void deleteComment(Integer id);
-	//public Map<UserDto, Map<PostDto, CommentDto>> showUserCommentsAndPost(Integer idPost, Integer idUser);
-	public List<CommentDto> searchCommentsOnPost(Integer idPost);
+	
 }

@@ -1,33 +1,22 @@
 package it.linksmt.teamshare.business.dto.request;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Blob;
+import java.sql.Date;
 
-import it.linksmt.teamshare.dao.entities.User;
+public class ContentRequestDto implements Serializable {
 
-public class ContentRequestDto implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9029038384862935199L;
-	
+
 	private String title;
-	
-	private String type;
-	
+	private boolean type;
 	private String url;
-	
 	private String fileName;
-	
 	private String format;
+	private Blob file;
+	private Date publicationDate;
 	
-	private File file;
-	
-	private Date publishDate;
-	
-	private User user;
+	private Integer idUser;
 
 	public String getTitle() {
 		return title;
@@ -37,11 +26,11 @@ public class ContentRequestDto implements Serializable{
 		this.title = title;
 	}
 
-	public String getType() {
+	public boolean isType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(boolean type) {
 		this.type = type;
 	}
 
@@ -69,27 +58,35 @@ public class ContentRequestDto implements Serializable{
 		this.format = format;
 	}
 
-	public File getFile() {
+	public Blob getFile() {
 		return file;
 	}
 
-	public void setFile(File file) {
+	public void setFile(Blob file) {
 		this.file = file;
 	}
 
-	public Date getPublishDate() {
-		return publishDate;
+	public Date getPublicationDate() {
+		return publicationDate;
 	}
 
-	public void setPublishDate(Date publishDate) {
-		this.publishDate = publishDate;
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 
-	public User getUser() {
-		return user;
+	public Integer getIdUser() {
+		return idUser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
+
+	@Override
+	public String toString() {
+		return "ContentRequestDto [title=" + title + ", type=" + type + ", url=" + url + ", fileName=" + fileName
+				+ ", format=" + format + ", file=" + file + ", publicationDate=" + publicationDate + ", idUser="
+				+ idUser + "]";
+	}
+
 }

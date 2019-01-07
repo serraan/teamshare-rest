@@ -11,56 +11,78 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import it.linksmt.teamshare.business.dto.request.CommentRequestDto;
 import it.linksmt.teamshare.business.dtos.CommentDto;
 import it.linksmt.teamshare.business.services.CommentService;
 
-@Api(value = "Comment Controller", description = "Comment Controller", tags = { "Commento" })
+@RequestMapping(name = "Comments Controllers", value = "/comments", produces = { MediaType.APPLICATION_JSON_VALUE })
 @Controller
-@RequestMapping(name = "Comment Controller",value = "/comments", produces = { MediaType.APPLICATION_JSON_VALUE })
+@Api(value = "Controller dei commenti", description = "Controller per i commenti", tags = { "Commenti" })
 public class CommentsController {
 
 	@Autowired
-	CommentService commentService;
-	
-	@ApiOperation(value = "Lista commenti di un post", notes = "Servizio rest per visualizzare tutti i commenti relativi ad un post", response = CommentDto.class)
-	@ApiResponse(code = 200, message = "Lista commenti di un post", response = CommentDto.class)
-	@RequestMapping(value = "/{idPost}", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<CommentDto>> getCommentsByPost(@PathVariable Integer idPost) {
-	        List<CommentDto> comments = commentService.searchCommentsOnPost(idPost);
-	        return new ResponseEntity<List<CommentDto>>(comments, HttpStatus.OK);
-	}
-	
-	@ApiOperation(value = "Aggiungere un Commento", notes = "Servizio rest per aggiungere un commento", response = CommentDto.class)
-	@ApiResponse(code = 200, message = "Aggiungere un commento", response = CommentDto.class)
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<CommentDto> addComment(@RequestBody	CommentRequestDto comment) {
-		CommentDto a = commentService.addComment(comment);
-		return new ResponseEntity<CommentDto>(a, HttpStatus.CREATED);
+	private CommentService commentService;
+
+	@ApiOperation(value = "Get Comments", notes = "Servizio rest per visualizzare la lista dei commenti", response = CommentDto.class)
+	@ApiResponse(code = 200, message = "Lista commenti", response = CommentDto.class)
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<CommentDto>> getComments() {
+		
+		List<CommentDto> comments = null;
+
+		comments = commentService.getComments();
+
+		return new ResponseEntity<List<CommentDto>>(comments, HttpStatus.OK);
+
 	}
 
-	@ApiOperation(value = "Aggiorna un commento", notes = "Servizio rest per aggiornare un commento", response = CommentDto.class)
-	@ApiResponse(code = 200, message = "Aggiorna un commento", response = CommentDto.class)
-	@RequestMapping(value = "/{commId}", method = RequestMethod.PUT)
-	@ResponseBody
-	public ResponseEntity<CommentDto> updateComment(@PathVariable("commId") int commId,@RequestBody CommentRequestDto comment) {
-		CommentDto u = commentService.updateComment(commId,comment);
-		return new ResponseEntity<CommentDto>(u, HttpStatus.OK);
+	@ApiOperation(value = "Get Comment", notes = "Servizio rest per visualizzare un commento", response = CommentDto.class)
+	@ApiResponse(code = 200, message = "Dettaglio commento", response = CommentDto.class)
+	@RequestMapping(value = "/{idComment}", method = RequestMethod.GET)
+	public ResponseEntity<CommentDto> getComment(
+			@PathVariable(name = "idComment") @ApiParam(value = "ID commento", required = true) final int commentId) {
+		
+		CommentDto c = commentService.getComment(commentId);
+
+		return new ResponseEntity<CommentDto>(c, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Cancellare un commento", notes = "Servizio rest per cancellare un commento", response = String.class)
-	@ApiResponse(code = 200, message = "Cancellare un commento", response = String.class)
-	@RequestMapping(value = "/{commentId}", method = RequestMethod.DELETE)
-	@ResponseBody
-	public void removeComment(@PathVariable Integer commentId) {
+	@ApiOperation(value = "Insert Comment", notes = "Servizio rest per aggiungere un commento", response = CommentDto.class)
+	@ApiResponse(code = 200, message = "Inserimento commento", response = CommentDto.class)
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<CommentDto> addComment(@RequestBody CommentRequestDto commentRequestDto) {
+		
+		CommentDto c = commentService.addComment(commentRequestDto);
 
+		return new ResponseEntity<CommentDto>(c, HttpStatus.CREATED);
+	}
+
+	@ApiOperation(value = "Update Comment", notes = "Servizio rest per aggiornare un commento", response = CommentDto.class)
+	@ApiResponse(code = 200, message = "Aggiornamento commento", response = CommentDto.class)
+	@RequestMapping(value = "/{idComment}", method = RequestMethod.PUT)
+	public ResponseEntity<CommentDto> updateComment(
+			@PathVariable(name = "idComment") @ApiParam(value = "ID commento", required = true) final int commentId,
+			@RequestBody CommentRequestDto commentRequestDto) {
+		
+		CommentDto a = commentService.updateComment(commentId, commentRequestDto);
+
+		return new ResponseEntity<CommentDto>(a, HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Delete Comment", notes = "Servizio rest per eliminare un commento", response = CommentDto.class)
+	@ApiResponse(code = 200, message = "Eliminazione commento", response = CommentDto.class)
+	@RequestMapping(value = "/{idComment}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteComment(
+			@PathVariable(name = "idComment") @ApiParam(value = "ID attivita", required = true) final int commentId) {
+		
 		commentService.deleteComment(commentId);
-}
+
+		return new ResponseEntity<String>("Ok, comment deleted.", HttpStatus.OK);
+	}
+
 }

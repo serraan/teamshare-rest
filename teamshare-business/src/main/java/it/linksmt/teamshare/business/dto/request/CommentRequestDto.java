@@ -1,30 +1,32 @@
 package it.linksmt.teamshare.business.dto.request;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
-public class CommentRequestDto implements Serializable{
+public class CommentRequestDto implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6276587944203358614L;
+	private static final long serialVersionUID = -8087174058306560889L;
 
-	private String testoCommento;
-	
-	private Date dataPubblicazione;
-	
+	private String text;
+	private Date publicationDate;
 
 	private Integer idPost;
-	
-	private Integer idUtente;
+	private Integer idUser;
 
-	public String getTestoCommento() {
-		return testoCommento;
+	public String getText() {
+		return text;
 	}
 
-	public void setTestoCommento(String testoCommento) {
-		this.testoCommento = testoCommento;
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Date getPublicationDate() {
+		return publicationDate;
+	}
+
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 
 	public Integer getIdPost() {
@@ -35,20 +37,18 @@ public class CommentRequestDto implements Serializable{
 		this.idPost = idPost;
 	}
 
-	public Integer getIdUtente() {
-		return idUtente;
+	public Integer getIdUser() {
+		return idUser;
 	}
 
-	public void setIdUtente(Integer idUtente) {
-		this.idUtente = idUtente;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
-	
-	public Date getDataPubblicazione() {
-		return dataPubblicazione;
+	@Override
+	public String toString() {
+		return "CommentRequestDto [text=" + text + ", publicationDate=" + publicationDate + ", idPost=" + idPost
+				+ ", idUser=" + idUser + "]";
 	}
-	
-	public void setDataPubblicazione(Date dataPubblicazione) {
-		this.dataPubblicazione = dataPubblicazione;
-	}
+
 }

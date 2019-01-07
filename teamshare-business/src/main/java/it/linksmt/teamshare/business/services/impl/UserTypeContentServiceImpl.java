@@ -17,49 +17,53 @@ import it.linksmt.teamshare.dao.repositories.UserTypeContentRepository;
 
 @Service
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
-public class UserTypeContentServiceImpl implements UserTypeContentService{
+public class UserTypeContentServiceImpl implements UserTypeContentService {
 
 	@Autowired
-	private UserTypeContentRepository userTypeContentRepository; 
-	
-	@Override
-	public List<UserTypeContentDto> getUsersTypesContents() {
-		List<UserTypeContent> userTypeContents = (List<UserTypeContent>) userTypeContentRepository.findAll();
+	private UserTypeContentRepository userTypeContentRepository;
 
-		return UserTypeContentConverter.MAPPER.toListUserTypeContentDTO(userTypeContents);
+	@Override
+	public List<UserTypeContentDto> getUserTypeContents() {
+
+		List<UserTypeContent> userTypeContents = (List<UserTypeContent>) userTypeContentRepository.findAll();
+		
+		return UserTypeContentConverter.MAPPER.toListUserTypeContentDto(userTypeContents);
 	}
 
 	@Override
-	public UserTypeContentDto getUserTypeContent(Integer id) {
-		Optional<UserTypeContent> userTypeContent = userTypeContentRepository.findById(id);
+	public UserTypeContentDto getUserTypeContent(Integer userTypeContentId) {
 
-		return UserTypeContentConverter.MAPPER.toUserTypeContentDTO(userTypeContent.get());
+		Optional<UserTypeContent> userTypeContent = userTypeContentRepository.findById(userTypeContentId);
+
+		return UserTypeContentConverter.MAPPER.toUserTypeContentDto(userTypeContent.get());
 	}
 
 	@Override
 	public UserTypeContentDto addUserTypeContent(UserTypeContentRequestDto userTypeContentRequestDto) {
+
 		UserTypeContent userTypeContent = UserTypeContentConverter.MAPPER.toUserTypeContent(userTypeContentRequestDto);
-
+		
 		userTypeContent = userTypeContentRepository.save(userTypeContent);
-
-		return UserTypeContentConverter.MAPPER.toUserTypeContentDTO(userTypeContent);
+		
+		return UserTypeContentConverter.MAPPER.toUserTypeContentDto(userTypeContent);
 	}
 
 	@Override
 	public UserTypeContentDto updateUserTypeContent(Integer userTypeContentId,
 			UserTypeContentRequestDto userTypeContentRequestDto) {
+
 		UserTypeContent userTypeContent = UserTypeContentConverter.MAPPER.toUserTypeContent(userTypeContentRequestDto);
 		userTypeContent.setId(userTypeContentId);
-
+		
 		userTypeContent = userTypeContentRepository.save(userTypeContent);
 
-		return UserTypeContentConverter.MAPPER.toUserTypeContentDTO(userTypeContent);
+		return UserTypeContentConverter.MAPPER.toUserTypeContentDto(userTypeContent);
 	}
 
 	@Override
-	public void deleteUserTypeContent(Integer id) {
-		userTypeContentRepository.deleteById(id);
+	public void deleteUserTypeContent(Integer userTypeContentId) {
 		
+		userTypeContentRepository.deleteById(userTypeContentId);
 	}
-
+	
 }

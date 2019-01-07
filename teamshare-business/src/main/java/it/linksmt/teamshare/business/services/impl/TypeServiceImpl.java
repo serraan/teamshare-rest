@@ -16,56 +16,53 @@ import it.linksmt.teamshare.dao.entities.Type;
 import it.linksmt.teamshare.dao.repositories.TypeRepository;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, noRollbackFor = Exception.class)
+@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
 public class TypeServiceImpl implements TypeService {
 
 	@Autowired
 	private TypeRepository typeRepository;
-	//////////////////////////////////////////////
-	@Override
-	public List<TypeDto> searchTypes(String nome) { 
-		List<Type> types = (List<Type>) typeRepository.findByNomeContaining(nome);
-
-		return TypeConverter.MAPPER.toListTypeDto(types);
-	}
 
 	@Override
 	public List<TypeDto> getTypes() {
-		List<Type> types = (List<Type>) typeRepository.findAll();
 
+		List<Type> types = (List<Type>) typeRepository.findAll();
+		
 		return TypeConverter.MAPPER.toListTypeDto(types);
 	}
 
 	@Override
-	public TypeDto getType(Integer id) {
-		Optional<Type> type = typeRepository.findById(id);
+	public TypeDto getType(Integer typeId) {
+
+		Optional<Type> type = typeRepository.findById(typeId);
 
 		return TypeConverter.MAPPER.toTypeDto(type.get());
 	}
 
 	@Override
 	public TypeDto addType(TypeRequestDto typeRequestDto) {
-		Type type = TypeConverter.MAPPER.toType(typeRequestDto);
 
+		Type type = TypeConverter.MAPPER.toType(typeRequestDto);
+		
+		type = typeRepository.save(type);
+		
+		return TypeConverter.MAPPER.toTypeDto(type);
+	}
+
+	@Override
+	public TypeDto updateType(Integer typeId, TypeRequestDto typeRequestDto) {
+
+		Type type = TypeConverter.MAPPER.toType(typeRequestDto);
+		type.setId(typeId);
+		
 		type = typeRepository.save(type);
 
 		return TypeConverter.MAPPER.toTypeDto(type);
 	}
 
 	@Override
-	public TypeDto updateType(Integer id, TypeRequestDto typeRequestDto) {
-		Type type = TypeConverter.MAPPER.toType(typeRequestDto);
+	public void deleteType(Integer typeId) {
 
-		type.setId(id);
-
-		typeRepository.save(type);
-
-		return TypeConverter.MAPPER.toTypeDto(type);
+		typeRepository.deleteById(typeId);
 	}
-
-	@Override
-	public void deleteType(Integer id) {
-		typeRepository.deleteById(id);
-	}
-
+	
 }

@@ -16,57 +16,53 @@ import it.linksmt.teamshare.dao.entities.Release;
 import it.linksmt.teamshare.dao.repositories.ReleaseRepository;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, noRollbackFor = Exception.class)
+@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
 public class ReleaseServiceImpl implements ReleaseService {
-
+	
 	@Autowired
 	private ReleaseRepository releaseRepository;
 
 	@Override
-	public List<ReleaseDto> searchReleases(String nome) {
-		List<Release> releases = (List<Release>) releaseRepository.findAll();
-
-		return ReleaseConverter.MAPPER.toListReleaseDto(releases);
-	}
-
-	@Override
 	public List<ReleaseDto> getReleases() {
-		List<Release> releases = (List<Release>) releaseRepository.findAll();
 
+		List<Release> releases = (List<Release>) releaseRepository.findAll();
+		
 		return ReleaseConverter.MAPPER.toListReleaseDto(releases);
 	}
 
 	@Override
-	public ReleaseDto getRelease(Integer id) {
-		Optional<Release> release = releaseRepository.findById(id);
+	public ReleaseDto getRelease(Integer releaseId) {
+
+		Optional<Release> release = releaseRepository.findById(releaseId);
 
 		return ReleaseConverter.MAPPER.toReleaseDto(release.get());
 	}
 
 	@Override
 	public ReleaseDto addRelease(ReleaseRequestDto releaseRequestDto) {
-		Release release = ReleaseConverter.MAPPER.toRelease(releaseRequestDto);
 
+		Release release = ReleaseConverter.MAPPER.toRelease(releaseRequestDto);
+		
+		release = releaseRepository.save(release);
+		
+		return ReleaseConverter.MAPPER.toReleaseDto(release);
+	}
+
+	@Override
+	public ReleaseDto updateRelease(Integer releaseId, ReleaseRequestDto releaseRequestDto) {
+
+		Release release = ReleaseConverter.MAPPER.toRelease(releaseRequestDto);
+		release.setId(releaseId);
+		
 		release = releaseRepository.save(release);
 
 		return ReleaseConverter.MAPPER.toReleaseDto(release);
 	}
 
 	@Override
-	public ReleaseDto updateRelease(Integer id, ReleaseRequestDto releaseRequestDto) {
-		Release release = ReleaseConverter.MAPPER.toRelease(releaseRequestDto);
+	public void deleteRelease(Integer releaseId) {
 
-		release.setId(id);
-
-		releaseRepository.save(release);
-
-		return ReleaseConverter.MAPPER.toReleaseDto(release);
+		releaseRepository.deleteById(releaseId);
 	}
-
-	@Override
-	public void deleteRelease(Integer id) {
-		releaseRepository.deleteById(id);
-
-	}
-
+	
 }

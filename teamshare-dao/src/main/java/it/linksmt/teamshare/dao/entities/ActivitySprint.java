@@ -13,13 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_attivita_sprint")
-public class ActivitySprint implements Serializable{
+public class ActivitySprint implements Serializable {
 
 	private static final long serialVersionUID = 1100015012130654286L;
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@ManyToOne(targetEntity=Activity.class)
@@ -52,6 +52,11 @@ public class ActivitySprint implements Serializable{
 
 	public void setSprint(Sprint sprint) {
 		this.sprint = sprint;
+	}
+
+	@Override
+	public String toString() {
+		return "ActivitySprint [id=" + id + ", activity=" + activity + ", sprint=" + sprint + "]";
 	}
 	
 }

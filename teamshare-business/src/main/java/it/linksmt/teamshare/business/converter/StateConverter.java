@@ -9,13 +9,13 @@ import it.linksmt.teamshare.business.dto.request.StateRequestDto;
 import it.linksmt.teamshare.business.dtos.StateDto;
 import it.linksmt.teamshare.dao.entities.State;
 
-
 @Mapper
 public interface StateConverter {
+
 	StateConverter MAPPER = Mappers.getMapper(StateConverter.class);
 
-	List<StateDto> toListStateDto(Iterable<State> allState);
-
+	List<StateDto> toListStateDto(Iterable<State> states);
+	
 	StateDto toStateDto(State state);
 	
 	State toState(StateDto stateDto);

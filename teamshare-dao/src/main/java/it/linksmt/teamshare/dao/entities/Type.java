@@ -13,34 +13,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_tipo")
-public class Type implements Serializable {
+@Table(name="tb_tipo")
+public class Type implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8032536420470308253L;
+	private static final long serialVersionUID = -1405254189843717807L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	private Integer id;
-
-	@Column(name = "nome")
-	private String nome;
-
-	@Column(name = "path_immagine")
-	private String pathImmagine;
 	
-	@OneToMany(mappedBy = "idType", cascade=CascadeType.ALL) //Rimosso "Orphan Removal"
-	private List<UserTypeContent> lsUserTypeContent;
-
-	public List<UserTypeContent> getLsUserTypeContent() {
-		return lsUserTypeContent;
-	}
-
-	public void setLsUserTypeContent(List<UserTypeContent> lsUserTypeContent) {
-		this.lsUserTypeContent = lsUserTypeContent;
-	}
+	@Column(name = "nome")
+	private String name;
+	
+	@Column(name = "path_immagine")
+	private String pathImage;
+	
+	@OneToMany(mappedBy = "type" , cascade=CascadeType.ALL)
+	private List<UserTypeContent> listUserTypeContent;
 
 	public Integer getId() {
 		return id;
@@ -50,19 +40,34 @@ public class Type implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPathImmagine() {
-		return pathImmagine;
+	public String getPathImage() {
+		return pathImage;
 	}
 
-	public void setPathImmagine(String pathImmagine) {
-		this.pathImmagine = pathImmagine;
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
 	}
+
+	public List<UserTypeContent> getListUserTypeContent() {
+		return listUserTypeContent;
+	}
+
+	public void setListUserTypeContent(List<UserTypeContent> listUserTypeContent) {
+		this.listUserTypeContent = listUserTypeContent;
+	}
+
+	@Override
+	public String toString() {
+		return "Type [id=" + id + ", name=" + name + ", pathImage=" + pathImage + ", listUserTypeContent="
+				+ listUserTypeContent + "]";
+	}
+	
 }

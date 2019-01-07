@@ -1,26 +1,33 @@
 package it.linksmt.teamshare.business.dto.request;
 
-public class TypeRequestDto{
-	
-	
-	private String nome;
-	private String pathImmagine;
+import java.io.Serializable;
 
-	public String getNome() {
-		return nome;
+public class TypeRequestDto implements Serializable {
+
+	private static final long serialVersionUID = -7607340738084557627L;
+
+	private String name;
+	private String pathImage;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPathImmagine() {
-		return pathImmagine;
+	public String getPathImage() {
+		return pathImage;
 	}
 
-	public void setPathImmagine(String pathImmagine) {
-		this.pathImmagine = pathImmagine;
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
 	}
 
+	@Override
+	public String toString() {
+		return "TypeRequestDto [name=" + name + ", pathImage=" + pathImage + "]";
 	}
 
+}

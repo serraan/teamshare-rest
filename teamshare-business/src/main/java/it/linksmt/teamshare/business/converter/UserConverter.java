@@ -14,9 +14,9 @@ public interface UserConverter {
 
 	UserConverter MAPPER = Mappers.getMapper(UserConverter.class);
 
-	List<UserDto> toListUserDTO(Iterable<User> allUser);
+	List<UserDto> toListUserDto(Iterable<User> users);
 
-	UserDto toUserDTO(User user);
+	UserDto toUserDto(User user);
 	
 	User toUser(UserDto userDto);
 	

@@ -10,5 +10,6 @@ import it.linksmt.teamshare.dao.entities.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
-	List<User> findByEmailContainingAndNomeContainingAndCognomeContaining(String email, String nome, String cognome);
+	List<User> findByEmailContainingAndFirstNameContainingAndLastNameContaining(String email, String firstName, String lastName);
+	
 }

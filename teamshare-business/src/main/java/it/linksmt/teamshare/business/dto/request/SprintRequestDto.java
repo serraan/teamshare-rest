@@ -1,40 +1,40 @@
 package it.linksmt.teamshare.business.dto.request;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SprintRequestDto {
+public class SprintRequestDto implements Serializable {
 
-	private Date dataInizio;
+	private static final long serialVersionUID = -1890973195400234886L;
 
-	private Date dataScadenza;
-
-	private String nomeSprint;
-
-	private Integer idRelease;
+	private Date startDate;
+	private Date endDate;
+	private String name;
 	
+	private Integer idRelease;
 
-	public Date getDataInizio() {
-		return dataInizio;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setDataInizio(Date dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getDataScadenza() {
-		return dataScadenza;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setDataScadenza(Date dataScadenza) {
-		this.dataScadenza = dataScadenza;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
-	public String getNomeSprint() {
-		return nomeSprint;
+	public String getName() {
+		return name;
 	}
 
-	public void setNomeSprint(String nomeSprint) {
-		this.nomeSprint = nomeSprint;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getIdRelease() {
@@ -44,4 +44,11 @@ public class SprintRequestDto {
 	public void setIdRelease(Integer idRelease) {
 		this.idRelease = idRelease;
 	}
+
+	@Override
+	public String toString() {
+		return "SprintRequestDto [startDate=" + startDate + ", endDate=" + endDate + ", name=" + name + ", idRelease="
+				+ idRelease + "]";
+	}
+
 }

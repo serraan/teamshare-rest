@@ -11,12 +11,15 @@ import it.linksmt.teamshare.dao.entities.Type;
 
 @Mapper
 public interface TypeConverter {
-
+	
 	TypeConverter MAPPER = Mappers.getMapper(TypeConverter.class);
 
-	List<TypeDto> toListTypeDto(Iterable<Type> allType);
+	List<TypeDto> toListTypeDto(Iterable<Type> types);
 	
 	TypeDto toTypeDto(Type type);
+
 	Type toType(TypeDto typeDto);
+	
 	Type toType(TypeRequestDto typeRequestDto);
+	
 }

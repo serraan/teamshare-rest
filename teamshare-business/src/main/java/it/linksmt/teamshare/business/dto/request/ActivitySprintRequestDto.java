@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 public class ActivitySprintRequestDto implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3753259068767756500L;
+	private static final long serialVersionUID = 5147715909821698827L;
 
-	private Integer idActivity;
-	
 	private Integer idSprint;
+	private Integer idActivity;
+
+	public Integer getIdSprint() {
+		return idSprint;
+	}
+
+	public void setIdSprint(Integer idSprint) {
+		this.idSprint = idSprint;
+	}
 
 	public Integer getIdActivity() {
 		return idActivity;
@@ -21,12 +25,9 @@ public class ActivitySprintRequestDto implements Serializable {
 		this.idActivity = idActivity;
 	}
 
-	public Integer getIdSprint() {
-		return idSprint;
-	}
-
-	public void setIdSprint(Integer idSprint) {
-		this.idSprint = idSprint;
+	@Override
+	public String toString() {
+		return "ActivitySprintRequestDto [idSprint=" + idSprint + ", idActivity=" + idActivity + "]";
 	}
 
 }

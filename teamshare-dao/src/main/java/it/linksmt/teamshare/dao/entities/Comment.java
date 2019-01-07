@@ -1,7 +1,7 @@
 package it.linksmt.teamshare.dao.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,31 +9,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_commento")
 public class Comment implements Serializable {
 
-	private static final long serialVersionUID = 5984401241096747568L;
-
+	private static final long serialVersionUID = 3848353290990470596L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(name = "testo")
-	private String testoCommento;
-
+	private String text;
+	
 	@Column(name = "data_pubblicazione")
-	private Date dataPubblicazione;
-
-	@ManyToOne
+	private Date publicationDate;
+	
+	@OneToOne
 	@JoinColumn(name = "id_post")
 	private Post post;
-
-	@ManyToOne
+	
+	@OneToOne
 	@JoinColumn(name = "id_utente")
-	private User utente;
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -43,12 +45,20 @@ public class Comment implements Serializable {
 		this.id = id;
 	}
 
-	public String getTestoCommento() {
-		return testoCommento;
+	public String getText() {
+		return text;
 	}
 
-	public void setTestoCommento(String testoCommento) {
-		this.testoCommento = testoCommento;
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Date getPublicationDate() {
+		return publicationDate;
+	}
+
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 
 	public Post getPost() {
@@ -59,20 +69,12 @@ public class Comment implements Serializable {
 		this.post = post;
 	}
 
-	public User getUtente() {
-		return utente;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUtente(User utente) {
-		this.utente = utente;
-	}
-
-	public Date getDataPubblicazione() {
-		return dataPubblicazione;
-	}
-
-	public void setDataPubblicazione(Date dataPubblicazione) {
-		this.dataPubblicazione = dataPubblicazione;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

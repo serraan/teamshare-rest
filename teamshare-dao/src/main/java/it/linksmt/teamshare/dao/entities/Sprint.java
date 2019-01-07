@@ -11,13 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_sprint")
-public class Sprint implements Serializable{
+public class Sprint implements Serializable {
 
 	private static final long serialVersionUID = -6033623675655160198L;
 
@@ -27,20 +27,20 @@ public class Sprint implements Serializable{
 	private Integer id;
 	
 	@Column(name = "data_inizio")
-	private Date dataInizio;
+	private Date startDate;
 	
 	@Column(name = "data_scadenza")
-	private Date dataScadenza;
+	private Date endDate;
 	
 	@Column(name = "nome")
-	private String nomeSprint;
+	private String name;
 	
-	@ManyToOne  //Cambiato da OneToOne
+	@OneToOne
 	@JoinColumn(name = "id_release")
 	private Release release;
 	
-	@OneToMany(mappedBy = "sprint", cascade=CascadeType.ALL) //Rimosso "Orphan Removal"
-	private List<ActivitySprint> lstActivitySprint;
+	@OneToMany(mappedBy = "sprint", cascade=CascadeType.ALL)
+	private List<ActivitySprint> listActivitySprint;
 
 	public Integer getId() {
 		return id;
@@ -50,28 +50,28 @@ public class Sprint implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDataInizio() {
-		return dataInizio;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setDataInizio(Date dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getDataScadenza() {
-		return dataScadenza;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setDataScadenza(Date dataScadenza) {
-		this.dataScadenza = dataScadenza;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
-	public String getNomeSprint() {
-		return nomeSprint;
+	public String getName() {
+		return name;
 	}
 
-	public void setNomeSprint(String nomeSprint) {
-		this.nomeSprint = nomeSprint;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Release getRelease() {
@@ -82,13 +82,18 @@ public class Sprint implements Serializable{
 		this.release = release;
 	}
 
-	public List<ActivitySprint> getLstActivitySprint() {
-		return lstActivitySprint;
+	public List<ActivitySprint> getListActivitySprint() {
+		return listActivitySprint;
 	}
 
-	public void setLstActivitySprint(List<ActivitySprint> lstActivitySprint) {
-		this.lstActivitySprint = lstActivitySprint;
+	public void setListActivitySprint(List<ActivitySprint> listActivitySprint) {
+		this.listActivitySprint = listActivitySprint;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Sprint [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", name=" + name
+				+ ", release=" + release + ", listActivitySprint=" + listActivitySprint + "]";
+	}
 
 }

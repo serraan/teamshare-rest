@@ -1,50 +1,63 @@
 package it.linksmt.teamshare.business.dto.request;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class PostRequestDto implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1387886715308234152L;
+	private static final long serialVersionUID = 6072948027196684169L;
 
-	private String titoloPost;
-	private String descrizionePost;
-	private String riferimentoPost;
-	private Integer idUtente;
-	private Date dataPost;
+	private String title;
+	private String description;
+	private int reference;
+	private Date publicationDate;
 	
-	public String getTitoloPost() {
-		return titoloPost;
+	private Integer idUser;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setTitoloPost(String titoloPost) {
-		this.titoloPost = titoloPost;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getDescrizionePost() {
-		return descrizionePost;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setDescrizionePost(String descrizionePost) {
-		this.descrizionePost = descrizionePost;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getRiferimentoPost() {
-		return riferimentoPost;
+
+	public int getReference() {
+		return reference;
 	}
-	public void setRiferimentoPost(String riferimentoPost) {
-		this.riferimentoPost = riferimentoPost;
+
+	public void setReference(int reference) {
+		this.reference = reference;
 	}
-	public Integer getIdUtente() {
-		return idUtente;
+
+	public Date getPublicationDate() {
+		return publicationDate;
 	}
-	public void setIdUtente(Integer idUtente) {
-		this.idUtente = idUtente;
+
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
 	}
-	public Date getDataPost() {
-		return dataPost;
+
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setDataPost(Date dataPost) {
-		this.dataPost = dataPost;
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
+
+	@Override
+	public String toString() {
+		return "PostRequestDto [title=" + title + ", description=" + description + ", reference=" + reference
+				+ ", publicationDate=" + publicationDate + ", idUser=" + idUser + "]";
 	}
 
 }

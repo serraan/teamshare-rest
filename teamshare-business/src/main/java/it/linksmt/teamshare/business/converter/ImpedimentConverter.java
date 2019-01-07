@@ -13,22 +13,27 @@ import it.linksmt.teamshare.dao.entities.Impediment;
 
 @Mapper
 public interface ImpedimentConverter {
-	
+
 	ImpedimentConverter MAPPER = Mappers.getMapper(ImpedimentConverter.class);
-
-	List<ImpedimentDto> toListImpedimentDTOResponse(Iterable<Impediment> allImpediment);
-
-	@Mappings({ @Mapping(target = "idTeam", source = "team.id"),
-		@Mapping(target = "idAttivita", source = "attivita.id") })
-	ImpedimentDto toImpedimentDTO(Impediment impediment);
 	
-	@Mappings({ @Mapping(target = "team.id", source = "idTeam"),
-		@Mapping(target = "attivita.id", source = "idAttivita")})
+	List<ImpedimentDto> toListImpedimentDto(List<Impediment> impediments);
+	
+	@Mappings({
+		@Mapping(target = "idTeam", source = "team.id"),
+		@Mapping(target = "idActivity", source = "activity.id")
+	})
+	ImpedimentDto toImpedimentDto(Impediment impediment);
+	
+	@Mappings({
+		@Mapping(target = "team.id", source = "idTeam"),
+		@Mapping(target = "activity.id", source = "idActivity")
+	})
 	Impediment toImpediment(ImpedimentDto impedimentDto);
 	
-	@Mappings({ @Mapping(target = "team.id", source = "idTeam"),
-		@Mapping(target = "attivita.id", source = "idAttivita")})
+	@Mappings({
+		@Mapping(target = "team.id", source = "idTeam"),
+		@Mapping(target = "activity.id", source = "idActivity")
+	})
 	Impediment toImpediment(ImpedimentRequestDto impedimentRequestDto);
-
-
+	
 }

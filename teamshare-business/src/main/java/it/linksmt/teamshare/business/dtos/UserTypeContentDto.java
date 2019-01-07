@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import it.linksmt.teamshare.business.dto.request.UserTypeContentRequestDto;
 
-public class UserTypeContentDto extends UserTypeContentRequestDto implements Serializable{
+public class UserTypeContentDto extends UserTypeContentRequestDto implements Serializable {
 
-	private static final long serialVersionUID = -1371707271379997381L;
-	
+	private static final long serialVersionUID = -6026870805099007903L;
+
 	private Integer id;
 
 	public Integer getId() {
@@ -17,9 +17,4 @@ public class UserTypeContentDto extends UserTypeContentRequestDto implements Ser
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }

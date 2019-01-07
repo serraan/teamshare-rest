@@ -6,7 +6,6 @@ import it.linksmt.teamshare.business.dto.request.TypeRequestDto;
 import it.linksmt.teamshare.business.dtos.TypeDto;
 
 public interface TypeService {
-	public List<TypeDto> searchTypes(String nome);
 
 	public List<TypeDto> getTypes();
 
@@ -14,7 +13,8 @@ public interface TypeService {
 
 	public TypeDto addType(TypeRequestDto typeRequestDto);
 
-	public TypeDto updateType(Integer id, TypeRequestDto typeRequestDto);
+	public TypeDto updateType(Integer typeId, TypeRequestDto typeRequestDto);
 
 	public void deleteType(Integer id);
+	
 }

@@ -5,43 +5,38 @@ import java.sql.Blob;
 import java.util.Date;
 
 public class UserRequestDto implements Serializable {
-	
+
 	private static final long serialVersionUID = 8289143077979931763L;
-	
-	private String nome;
-	
-	private String cognome;
-	
-	private Date dataNascita;
-	
+
+	private String firstName;
+	private String lastName;
+	private Date birthDate;
 	private String email;
-	
 	private String password;
-	
 	private Blob avatar;
 
-	public String getNome() {
-		return nome;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getCognome() {
-		return cognome;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public Date getDataNascita() {
-		return dataNascita;
+	public Date getBirthDate() {
+		return birthDate;
 	}
 
-	public void setDataNascita(Date dataNascita) {
-		this.dataNascita = dataNascita;
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getEmail() {
@@ -67,7 +62,11 @@ public class UserRequestDto implements Serializable {
 	public void setAvatar(Blob avatar) {
 		this.avatar = avatar;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "UserRequestDto [firstName=" + firstName + ", lastName=" + lastName + ", birthDate=" + birthDate
+				+ ", email=" + email + ", password=" + password + ", avatar=" + avatar + "]";
+	}
+
 }

@@ -6,7 +6,6 @@ import it.linksmt.teamshare.business.dto.request.SprintRequestDto;
 import it.linksmt.teamshare.business.dtos.SprintDto;
 
 public interface SprintService {
-	public List<SprintDto> searchSprints(String nomeSprint);
 
 	public List<SprintDto> getSprints();
 
@@ -14,7 +13,8 @@ public interface SprintService {
 
 	public SprintDto addSprint(SprintRequestDto sprintRequestDto);
 
-	public SprintDto updateSprint(Integer id, SprintRequestDto sprintRequestDto);
+	public SprintDto updateSprint(Integer sprintId, SprintRequestDto sprintRequestDto);
 
 	public void deleteSprint(Integer id);
+	
 }

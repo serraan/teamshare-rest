@@ -2,15 +2,12 @@ package it.linksmt.teamshare.business.dto.request;
 
 import java.io.Serializable;
 
+public class UserTypeContentRequestDto implements Serializable {
 
-public class UserTypeContentRequestDto implements Serializable{
-	
-	private static final long serialVersionUID = 4466501882146362292L;
+	private static final long serialVersionUID = -879644256253343909L;
 
-	private Integer idUser; 
-	
-	private Integer idType; 
-	
+	private Integer idUser;
+	private Integer idType;
 	private Integer idContent;
 
 	public Integer getIdUser() {
@@ -37,8 +34,9 @@ public class UserTypeContentRequestDto implements Serializable{
 		this.idContent = idContent;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public String toString() {
+		return "UserTypeContentRequestDto [idUser=" + idUser + ", idType=" + idType + ", idContent=" + idContent + "]";
 	}
 
 }

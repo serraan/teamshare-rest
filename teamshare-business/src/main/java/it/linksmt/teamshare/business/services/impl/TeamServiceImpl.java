@@ -18,53 +18,51 @@ import it.linksmt.teamshare.dao.repositories.TeamRepository;
 @Service
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
 public class TeamServiceImpl implements TeamService {
-
+	
 	@Autowired
 	private TeamRepository teamRepository;
-	
+
 	@Override
 	public List<TeamDto> getTeams() {
-		
+
 		List<Team> teams = (List<Team>) teamRepository.findAll();
 		
-		return TeamConverter.MAPPER.toListTeamDTO(teams);
-		
+		return TeamConverter.MAPPER.toListTeamDto(teams);
 	}
 
 	@Override
-	public TeamDto getTeamById(Integer id) {
-		
-		Optional<Team> teams = teamRepository.findById(id);
-		
-		return TeamConverter.MAPPER.toTeamDTO(teams.get());
+	public TeamDto getTeam(Integer teamId) {
+
+		Optional<Team> team = teamRepository.findById(teamId);
+
+		return TeamConverter.MAPPER.toTeamDto(team.get());
 	}
 
 	@Override
 	public TeamDto addTeam(TeamRequestDto teamRequestDto) {
-		
+
 		Team team = TeamConverter.MAPPER.toTeam(teamRequestDto);
 		
 		team = teamRepository.save(team);
 		
-		return TeamConverter.MAPPER.toTeamDTO(team);
+		return TeamConverter.MAPPER.toTeamDto(team);
 	}
 
 	@Override
-	public TeamDto updateTeam(Integer id, TeamRequestDto teamRequestDto) {
-		
+	public TeamDto updateTeam(Integer teamId, TeamRequestDto teamRequestDto) {
+
 		Team team = TeamConverter.MAPPER.toTeam(teamRequestDto);
-		team.setId(id);
+		team.setId(teamId);
 		
 		team = teamRepository.save(team);
-		
-		return TeamConverter.MAPPER.toTeamDTO(team);
+
+		return TeamConverter.MAPPER.toTeamDto(team);
 	}
 
 	@Override
-	public void deleteTeam(Integer id) {
+	public void deleteTeam(Integer teamId) {
 
-		teamRepository.deleteById(id);
-
+		teamRepository.deleteById(teamId);
 	}
 
 }

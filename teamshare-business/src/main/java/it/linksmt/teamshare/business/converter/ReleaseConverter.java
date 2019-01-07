@@ -14,11 +14,12 @@ public interface ReleaseConverter {
 	
 	ReleaseConverter MAPPER = Mappers.getMapper(ReleaseConverter.class);
 
-	List<ReleaseDto> toListReleaseDto(Iterable<Release> allRelease);
+	List<ReleaseDto> toListReleaseDto(Iterable<Release> releases);
 
 	ReleaseDto toReleaseDto(Release release);
 	
 	Release toRelease(ReleaseDto releaseDto);
 	
 	Release toRelease(ReleaseRequestDto releaseRequestDto);
+	
 }

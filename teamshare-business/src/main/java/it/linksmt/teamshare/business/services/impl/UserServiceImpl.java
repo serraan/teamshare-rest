@@ -24,23 +24,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserDto> searchUsers(String email, String firstName, String lastName) {
-		List<User> users = null;
-
-//		if(!StringUtils.isEmpty(email) && StringUtils.isEmpty(firstName) && StringUtils.isEmpty(lastName)) {
-//			users = userRepository.findByEmail(email);
-//		} else if(StringUtils.isEmpty(email) && !StringUtils.isEmpty(firstName) && StringUtils.isEmpty(lastName)) {
-//			users = userRepository.findByFirstName(firstName);
-//		} else if(StringUtils.isEmpty(email) && StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
-//			users = userRepository.findByLastName(lastName);
-//		}else if(StringUtils.isEmpty(email) && !StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
-//			users = userRepository.findByFirstNameAndLastName(firstName, lastName);
-//		} else {
-//			users = (List<User>) userRepository.findAll();
-//		}
 		
-		users = userRepository.findByEmailContainingAndNomeContainingAndCognomeContaining(email, firstName, lastName);
+		List<User> users = userRepository.findByEmailContainingAndFirstNameContainingAndLastNameContaining(email, firstName, lastName);
 
-		return UserConverter.MAPPER.toListUserDTO(users);
+		return UserConverter.MAPPER.toListUserDto(users);
 	}
 
 	@Override
@@ -48,15 +35,15 @@ public class UserServiceImpl implements UserService {
 
 		List<User> users = (List<User>) userRepository.findAll();
 
-		return UserConverter.MAPPER.toListUserDTO(users);
+		return UserConverter.MAPPER.toListUserDto(users);
 	}
 
 	@Override
-	public UserDto getUser(Integer id) {
+	public UserDto getUser(Integer userId) {
 
-		Optional<User> user = userRepository.findById(id);
+		Optional<User> user = userRepository.findById(userId);
 
-		return UserConverter.MAPPER.toUserDTO(user.get());
+		return UserConverter.MAPPER.toUserDto(user.get());
 	}
 
 	@Override
@@ -66,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
 		user = userRepository.save(user);
 
-		return UserConverter.MAPPER.toUserDTO(user);
+		return UserConverter.MAPPER.toUserDto(user);
 	}
 
 	@Override
@@ -77,13 +64,13 @@ public class UserServiceImpl implements UserService {
 
 		user = userRepository.save(user);
 
-		return UserConverter.MAPPER.toUserDTO(user);
+		return UserConverter.MAPPER.toUserDto(user);
 	}
 
 	@Override
-	public void deleteUser(Integer id) {
+	public void deleteUser(Integer userId) {
 
-		userRepository.deleteById(id);
+		userRepository.deleteById(userId);
 	}
 
 }

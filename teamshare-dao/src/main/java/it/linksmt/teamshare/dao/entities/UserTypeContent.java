@@ -2,6 +2,7 @@ package it.linksmt.teamshare.dao.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,28 +11,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "tb_utente_tipo_contenuto")
-public class UserTypeContent implements Serializable{
-	
-	private static final long serialVersionUID = -9189730108168769048L;
+@Table(name="tb_utente_tipo_contenuto")
+public class UserTypeContent implements Serializable {
 
+	private static final long serialVersionUID = 4362344218089002134L;
+	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne
-    @JoinColumn(name = "id_utente")
-	private User idUser; 
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name = "id_utente")
+	private User user;
 	
-	@ManyToOne
-    @JoinColumn(name = "id_tipo")
-	private Type idType; 
+	@ManyToOne(targetEntity=Type.class)
+	@JoinColumn(name = "id_tipo")
+	private Type type;
 	
-	@ManyToOne
-    @JoinColumn(name = "id_contenuto")
-	private Content idContent;
+	@ManyToOne(targetEntity=Content.class)
+	@JoinColumn(name = "id_contenuto")
+	private Content content;
 
 	public Integer getId() {
 		return id;
@@ -41,34 +42,33 @@ public class UserTypeContent implements Serializable{
 		this.id = id;
 	}
 
-	public User getIdUser() {
-		return idUser;
+	public User getUser() {
+		return user;
 	}
 
-	public void setIdUser(User idUser) {
-		this.idUser = idUser;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Type getIdType() {
-		return idType;
+	public Type getType() {
+		return type;
 	}
 
-	public void setIdType(Type idType) {
-		this.idType = idType;
+	public void setType(Type type) {
+		this.type = type;
 	}
 
-	public Content getIdContent() {
-		return idContent;
+	public Content getContent() {
+		return content;
 	}
 
-	public void setIdContent(Content idContent) {
-		this.idContent = idContent;
+	public void setContent(Content content) {
+		this.content = content;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public String toString() {
+		return "UserTypeContent [id=" + id + ", user=" + user + ", type=" + type + ", content=" + content + "]";
 	}
-
-	
 
 }

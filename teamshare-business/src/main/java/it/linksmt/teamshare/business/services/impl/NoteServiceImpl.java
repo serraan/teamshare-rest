@@ -17,43 +17,52 @@ import it.linksmt.teamshare.dao.repositories.NoteRepository;
 
 @Service
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
-public class NoteServiceImpl implements NoteService{
+public class NoteServiceImpl implements NoteService {
 
 	@Autowired
 	private NoteRepository noteRepository;
-	
+
 	@Override
 	public List<NoteDto> getNotes() {
-		List<Note> notes= (List<Note>) noteRepository.findAll();
-		return NoteConverter.MAPPER.toListNoteDTO(notes);
+
+		List<Note> notes = (List<Note>) noteRepository.findAll();
+		
+		return NoteConverter.MAPPER.toListNoteDto(notes);
 	}
 
 	@Override
-	public NoteDto getNote(Integer id) {
-		Optional<Note> note= noteRepository.findById(id);
-		return NoteConverter.MAPPER.toNoteDTO(note.get());
+	public NoteDto getNote(Integer noteId) {
+
+		Optional<Note> note = noteRepository.findById(noteId);
+
+		return NoteConverter.MAPPER.toNoteDto(note.get());
 	}
 
 	@Override
 	public NoteDto addNote(NoteRequestDto noteRequestDto) {
-		Note note= NoteConverter.MAPPER.toNote(noteRequestDto);
-		note= noteRepository.save(note);
-		return NoteConverter.MAPPER.toNoteDTO(note);
+
+		Note note = NoteConverter.MAPPER.toNote(noteRequestDto);
+		
+		note = noteRepository.save(note);
+		
+		return NoteConverter.MAPPER.toNoteDto(note);
 	}
 
 	@Override
 	public NoteDto updateNote(Integer noteId, NoteRequestDto noteRequestDto) {
-		Note note= NoteConverter.MAPPER.toNote(noteRequestDto);
+
+		Note note = NoteConverter.MAPPER.toNote(noteRequestDto);
 		note.setId(noteId);
-		note= noteRepository.save(note);
-		return NoteConverter.MAPPER.toNoteDTO(note);
+		
+		note = noteRepository.save(note);
+
+		return NoteConverter.MAPPER.toNoteDto(note);
 	}
 
 	@Override
-	public void deleteNote(Integer id) {
-		noteRepository.deleteById(id);	
+	public void deleteNote(Integer noteId) {
+		
+		noteRepository.deleteById(noteId);
 	}
 	
-	
-
 }

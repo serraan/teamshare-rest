@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import it.linksmt.teamshare.business.dto.request.StateRequestDto;
 
-public class StateDto extends StateRequestDto implements Serializable{
+public class StateDto extends StateRequestDto implements Serializable {
 
-	private static final long serialVersionUID = 3399318998762675600L;
+	private static final long serialVersionUID = -8320480227839344614L;
 	
 	private Integer id;
 
@@ -17,9 +17,5 @@ public class StateDto extends StateRequestDto implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	} 
-
+	
 }

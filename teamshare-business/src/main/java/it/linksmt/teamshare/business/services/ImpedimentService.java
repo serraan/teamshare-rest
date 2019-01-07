@@ -7,14 +7,14 @@ import it.linksmt.teamshare.business.dtos.ImpedimentDto;
 
 public interface ImpedimentService {
 
-	public List<ImpedimentDto> searchImpediments();
-	
-	public ImpedimentDto updateImpediment(Integer idImpediment, ImpedimentRequestDto impedimentRequestDto);
-	
+	public List<ImpedimentDto> getImpediments();
+
+	public ImpedimentDto getImpediment(Integer id);
+
 	public ImpedimentDto addImpediment(ImpedimentRequestDto impedimentRequestDto);
-	
-	public ImpedimentDto getImpediment(Integer idImpediment);
-	
-	public void deleteImpediment(Integer idImpediment);
+
+	public ImpedimentDto updateImpediment(Integer impedimentId, ImpedimentRequestDto impedimentRequestDto);
+
+	public void deleteImpediment(Integer id);
 	
 }

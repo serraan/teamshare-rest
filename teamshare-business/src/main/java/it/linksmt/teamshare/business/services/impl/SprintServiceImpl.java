@@ -16,57 +16,53 @@ import it.linksmt.teamshare.dao.entities.Sprint;
 import it.linksmt.teamshare.dao.repositories.SprintRepository;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, noRollbackFor = Exception.class)
+@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
 public class SprintServiceImpl implements SprintService {
 
 	@Autowired
 	private SprintRepository sprintRepository;
 
 	@Override
-	public List<SprintDto> searchSprints(String nomeSprint) {
-		List<Sprint> sprints = sprintRepository.findByNomeSprintContaining(nomeSprint);
-
-		return SprintConverter.MAPPER.toListSprintDto(sprints);
-	}
-
-	@Override
 	public List<SprintDto> getSprints() {
-		List<Sprint> sprints = (List<Sprint>) sprintRepository.findAll();
 
+		List<Sprint> sprints = (List<Sprint>) sprintRepository.findAll();
+		
 		return SprintConverter.MAPPER.toListSprintDto(sprints);
 	}
 
 	@Override
-	public SprintDto getSprint(Integer id) {
-		Optional<Sprint> sprint = sprintRepository.findById(id);
+	public SprintDto getSprint(Integer sprintId) {
+		
+		Optional<Sprint> sprint = sprintRepository.findById(sprintId);
 
 		return SprintConverter.MAPPER.toSprintDto(sprint.get());
 	}
 
 	@Override
 	public SprintDto addSprint(SprintRequestDto sprintRequestDto) {
-		Sprint sprint = SprintConverter.MAPPER.toSprint(sprintRequestDto);
 
+		Sprint sprint = SprintConverter.MAPPER.toSprint(sprintRequestDto);
+		
+		sprint = sprintRepository.save(sprint);
+		
+		return SprintConverter.MAPPER.toSprintDto(sprint);
+	}
+
+	@Override
+	public SprintDto updateSprint(Integer sprintId, SprintRequestDto sprintRequestDto) {
+
+		Sprint sprint = SprintConverter.MAPPER.toSprint(sprintRequestDto);
+		sprint.setId(sprintId);
+		
 		sprint = sprintRepository.save(sprint);
 
 		return SprintConverter.MAPPER.toSprintDto(sprint);
 	}
 
 	@Override
-	public SprintDto updateSprint(Integer id, SprintRequestDto sprintRequestDto) {
-		Sprint sprint = SprintConverter.MAPPER.toSprint(sprintRequestDto);
+	public void deleteSprint(Integer sprintId) {
 
-		sprint.setId(id);
-
-		sprintRepository.save(sprint);
-
-		return SprintConverter.MAPPER.toSprintDto(sprint);
+		sprintRepository.deleteById(sprintId);
 	}
-
-	@Override
-	public void deleteSprint(Integer id) {
-		sprintRepository.deleteById(id);
-
-	}
-
+	
 }

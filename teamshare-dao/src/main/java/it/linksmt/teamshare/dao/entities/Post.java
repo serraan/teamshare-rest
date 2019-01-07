@@ -1,7 +1,7 @@
 package it.linksmt.teamshare.dao.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,27 +19,32 @@ import javax.persistence.Table;
 @Table(name = "tb_post")
 public class Post implements Serializable {
 
-	private static final long serialVersionUID = -1458400562028096121L;
+	private static final long serialVersionUID = -3853231229292705347L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(name = "titolo")
-	private String titoloPost;
+	private String title;
+	
 	@Column(name = "descrizione")
-	private String descrizionePost;
+	private String description;
+	
 	@Column(name = "riferimento")
-	private String riferimentoPost;
-
+	private String reference;
+	
+	@Column(name = "data_pubblicazione")
+	private Date publicationDate;
+	
 	@OneToOne
 	@JoinColumn(name = "id_utente")
-	private User utenteCreatore;
-	@Column(name = "data_pubblicazione")
-	private Date dataPost;
-
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Comment> commento;
-
+	private User user;
+	
+	@OneToMany(mappedBy = "post" , cascade=CascadeType.ALL)
+	private List<Comment> listComment;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -48,44 +53,58 @@ public class Post implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitoloPost() {
-		return titoloPost;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitoloPost(String titoloPost) {
-		this.titoloPost = titoloPost;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDescrizionePost() {
-		return descrizionePost;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrizionePost(String descrizionePost) {
-		this.descrizionePost = descrizionePost;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getRiferimentoPost() {
-		return riferimentoPost;
+	public String getReference() {
+		return reference;
 	}
 
-	public void setRiferimentoPost(String riferimentoPost) {
-		this.riferimentoPost = riferimentoPost;
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 
-	public User getUtenteCreatore() {
-		return utenteCreatore;
+	public Date getPublicationDate() {
+		return publicationDate;
 	}
 
-	public void setUtenteCreatore(User utenteCreatore) {
-		this.utenteCreatore = utenteCreatore;
+	public void setPuSblicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 
-	public Date getDataPost() {
-		return dataPost;
+	public User getUser() {
+		return user;
 	}
 
-	public void setDataPost(Date dataPost) {
-		this.dataPost = dataPost;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Comment> getListComment() {
+		return listComment;
+	}
+
+	public void setListComment(List<Comment> listComment) {
+		this.listComment = listComment;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", description=" + description + ", reference=" + reference
+				+ ", publicationDate=" + publicationDate + ", user=" + user + ", listComment=" + listComment + "]";
 	}
 
 }

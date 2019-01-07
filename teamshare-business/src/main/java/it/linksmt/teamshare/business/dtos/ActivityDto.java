@@ -5,7 +5,7 @@ import java.io.Serializable;
 import it.linksmt.teamshare.business.dto.request.ActivityRequestDto;
 
 public class ActivityDto extends ActivityRequestDto implements Serializable {
-
+	
 	private static final long serialVersionUID = -3217169896191882826L;
 
 	private Integer id;
@@ -20,12 +20,9 @@ public class ActivityDto extends ActivityRequestDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Activity [Titolo: " + getTitolo() + " | Descrizione: " + getDescrizione() + " | Tipo: "
-				+ getTipo() + " | Priorita: " + getPriorita() + " | DataPresaIncarico: "+ getDataPresaIncarico()
-				+ "| Id Utente Creatore: " + getIdUtenteCreatore() + " | IdUtenteAssegnatario: "
-				+ getIdUtenteAssegnatario() + " | Lista Sprint: " + getSprints() + "]";
+		return "Activity [id=" + id + ", getTitle()=" + getTitle() + ", getDescription()=" + getDescription()
+				+ ", getType()=" + getType() + ", getPriority()=" + getPriority() + ", getDateTakenIntoCharge()="
+				+ getDateTakenIntoCharge() + ", getIdUserCreator()=" + getIdUserCreator() + ", getIdUserAssignee()="
+				+ getIdUserAssignee() +  "]";
 	}
-	
-	
-
 }

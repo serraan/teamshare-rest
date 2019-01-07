@@ -2,12 +2,9 @@ package it.linksmt.teamshare.business.dto.request;
 
 import java.io.Serializable;
 
-public class TeamRequestDto implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1266698308230338297L;
+public class TeamRequestDto implements Serializable {
+
+	private static final long serialVersionUID = 5062720516849446833L;
 
 	private String name;
 
@@ -18,5 +15,5 @@ public class TeamRequestDto implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

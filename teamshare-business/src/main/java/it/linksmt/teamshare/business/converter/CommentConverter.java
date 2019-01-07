@@ -13,21 +13,27 @@ import it.linksmt.teamshare.dao.entities.Comment;
 
 @Mapper
 public interface CommentConverter {
-	
-		CommentConverter MAPPER = Mappers.getMapper(CommentConverter.class);
-		
-		@Mappings({ @Mapping(target = "idUtente", source = "utente.id"),
-			@Mapping(target = "idPost", source = "post.id") })
-		CommentDto toCommentDTO(Comment comment);
-		
-		@Mappings({ @Mapping(target = "utente.id", source = "idUtente"),
-			@Mapping(target = "post.id", source = "idPost") })
-		Comment toComment(CommentDto commentDto);
-		
-		@Mappings({ @Mapping(target = "utente.id", source = "idUtente"),
-			@Mapping(target = "post.id", source = "idPost") })
-		Comment toComment(CommentRequestDto commentRequestDto);
-		
-		List<CommentDto> toListaCommentDTOResponse(Iterable<Comment> commentsByPost);
 
+	CommentConverter MAPPER = Mappers.getMapper(CommentConverter.class);
+
+	List<CommentDto> toListCommentDto(Iterable<Comment> comments);
+
+	@Mappings({
+		@Mapping(target = "idUser", source = "user.id"),
+		@Mapping(target = "idPost", source = "post.id")
+	})
+	CommentDto toCommentDto(Comment comment);
+	
+	@Mappings({
+		@Mapping(target = "user.id", source = "idUser"),
+		@Mapping(target = "post.id", source = "idPost")
+	})
+	Comment toComment(CommentDto commentDto);
+	
+	@Mappings({
+		@Mapping(target = "user.id", source = "idUser"),
+		@Mapping(target = "post.id", source = "idPost")
+	})
+	Comment toComment(CommentRequestDto commentRequestDto);
+	
 }

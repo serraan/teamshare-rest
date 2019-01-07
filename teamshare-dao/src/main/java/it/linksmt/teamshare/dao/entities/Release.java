@@ -20,37 +20,42 @@ public class Release implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-
+	
 	@Column(name = "nome")
-	private String nome;
-
-	@OneToMany(mappedBy = "release", cascade = CascadeType.ALL) //Rimosso "Orphan Removal"
-	private List<Sprint> lstSprint;
+	private String name;
+	
+	@OneToMany(mappedBy = "release" , cascade=CascadeType.ALL)
+	private List<Sprint> listSprint;
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Sprint> getListSprint() {
+		return listSprint;
+	}
+
+	public void setListSprint(List<Sprint> listSprint) {
+		this.listSprint = listSprint;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	@Override
+	public String toString() {
+		return "Release [id=" + id + ", name=" + name + ", listSprint=" + listSprint + "]";
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<Sprint> getLstSprint() {
-		return lstSprint;
-	}
-
-	public void setLstSprint(List<Sprint> lstSprint) {
-		this.lstSprint = lstSprint;
-	}
-
+	
 }

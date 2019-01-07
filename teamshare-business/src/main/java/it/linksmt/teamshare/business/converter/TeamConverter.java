@@ -13,12 +13,13 @@ import it.linksmt.teamshare.dao.entities.Team;
 public interface TeamConverter {
 	
 	TeamConverter MAPPER = Mappers.getMapper(TeamConverter.class);
+
+	List<TeamDto> toListTeamDto(List<Team> teams);
 	
-	List<TeamDto> toListTeamDTO(Iterable<Team> allTeams);
-	
-	TeamDto toTeamDTO(Team team);
+	TeamDto toTeamDto(Team team);
 	
 	Team toTeam(TeamDto teamDto);
 	
 	Team toTeam(TeamRequestDto teamRequestDto);
+	
 }
