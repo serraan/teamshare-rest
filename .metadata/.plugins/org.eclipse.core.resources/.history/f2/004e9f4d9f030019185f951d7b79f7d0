@@ -1,9 +1,0 @@
-package it.linksmt.converter;
-
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-
-@Mapper
-public interface CommentConverter {
-		CommentConverter MAPPER = Mappers.getMapper(CommentConverter.class);
-}

@@ -1,5 +1,0 @@
-package it.linksmt.teamshare.business.dtos;
-
-public class PostDto {
-
-}

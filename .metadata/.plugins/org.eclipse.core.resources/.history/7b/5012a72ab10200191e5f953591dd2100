@@ -1,9 +1,0 @@
-package it.linksmt.teamshare.business.dtos;
-
-import java.io.Serializable;
-
-import it.linksmt.teamshare.business.request.TeamRequestDto;
-
-public class TeamDto extends TeamRequestDto implements Serializable {
-
-}

@@ -1,5 +1,0 @@
-package it.linksmt.converter;
-
-public interface TeamConverter {
-
-}

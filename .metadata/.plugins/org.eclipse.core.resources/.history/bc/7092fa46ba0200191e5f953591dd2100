@@ -1,7 +1,0 @@
-package it.linksmt.teamshare.business.request;
-
-import java.io.Serializable;
-
-public class PostRequestDto implements Serializable{
-
-}
