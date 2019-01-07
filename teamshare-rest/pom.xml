@@ -66,7 +66,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<webappDirectory>C:\tomcat\webapps\teamshare-rest\</webappDirectory>
+					<webappDirectory>C:\Users\SERRAANDREA\Desktop\Links\Utilities\tomcat\webapps\teamshare-rest\</webappDirectory>
 				</configuration>
 			</plugin>
 			<plugin>

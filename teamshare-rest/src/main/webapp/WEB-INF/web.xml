@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
-	<display-name>TeamShare REST</display-name>
-	<filter>
-		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>ISO-8859-1</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	
-	<servlet>
-	 <servlet-name>Activities</servlet-name>
-	 <servlet-class>it.linksmt.teamshare.servlet.ActivityServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>Activities</servlet-name>
-		<url-pattern>/Act</url-pattern>
-	</servlet-mapping>	
-	
-	<servlet>
-		<servlet-name>rest-mvc-dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>rest-mvc-dispatcher</servlet-name>
-		<url-pattern>/api/*</url-pattern>
-	</servlet-mapping>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/rest-mvc-dispatcher-servlet.xml</param-value>
-	</context-param>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>TeamShare REST</display-name>
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>ISO-8859-1</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <servlet>
+    <servlet-name>Activities</servlet-name>
+    <servlet-class>it.linksmt.teamshare.servlet.ActivityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Activities</servlet-name>
+    <url-pattern>/Act</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Teams</servlet-name>
+    <servlet-class>it.linksmt.teamshare.servlet.TeamServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Teams</servlet-name>
+    <url-pattern>/team</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>  
+    <servlet-name>rest-mvc-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rest-mvc-dispatcher</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/rest-mvc-dispatcher-servlet.xml</param-value>
+  </context-param>
 </web-app>

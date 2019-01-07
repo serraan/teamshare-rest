@@ -11,5 +11,6 @@
 	<h3>Seleziona una delle seguenti categorie</h3>
 	<a href="activity.jsp">Attivita</a>
 	<a href="user.jsp">Utente</a>
+	<a href="team.jsp">Team</a>
 </body>
 </html>
