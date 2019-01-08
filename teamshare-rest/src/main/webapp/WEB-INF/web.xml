@@ -32,7 +32,6 @@
 		<servlet-name>Teams</servlet-name>
 		<url-pattern>/team</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>TeamDelete</servlet-name>
 		<servlet-class>it.linksmt.teamshare.servlet.TeamDeleteServlet</servlet-class>
@@ -40,6 +39,15 @@
 	<servlet-mapping>
 		<servlet-name>TeamDelete</servlet-name>
 		<url-pattern>/teamDelete</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TeamUpdate</servlet-name>
+		<servlet-class>it.linksmt.teamshare.servlet.TeamUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TeamUpdate</servlet-name>
+		<url-pattern>/teamUpdate</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

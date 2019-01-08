@@ -15,14 +15,14 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import it.linksmt.teamshare.business.dtos.TeamDto;
+import it.linksmt.teamshare.business.dto.request.TeamRequestDto;
 import it.linksmt.teamshare.business.services.TeamService;
 
 /**
- * Servlet implementation class TeamDeleteServlet
+ * Servlet implementation class TeamUpdateServlet
  */
-@WebServlet("/TeamDeleteServlet")
-public class TeamDeleteServlet extends HttpServlet {
+@WebServlet("/TeamUpdateServlet")
+public class TeamUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -41,9 +41,18 @@ public class TeamDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TeamDeleteServlet() {
+	public TeamUpdateServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,13 +62,13 @@ public class TeamDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		TeamDto dto = new TeamDto();
+		TeamRequestDto dto = new TeamRequestDto();
+		
+			dto.setName((request.getParameter("nameUpdate")));
+			service.updateTeam(Integer.parseInt(request.getParameter("idUpdate")), dto);
 
-			dto.setId(Integer.parseInt(request.getParameter("idDelete")));
-			service.deleteTeam(Integer.parseInt(request.getParameter("idDelete")));
-
-			request.setAttribute("teamDeleted", dto);
-			RequestDispatcher rd = request.getRequestDispatcher("TeamDeleted.jsp");
+			request.setAttribute("teamUpdated", dto);
+			RequestDispatcher rd = request.getRequestDispatcher("TeamUpdated.jsp");
 			rd.forward(request, response);
 
 		

@@ -21,7 +21,7 @@
 		TeamDto team = (TeamDto) request.getAttribute("teamDeleted");
 		%>
 	<div class="container">
-		<h3>The team with ID <%out.write(team.getId()); %> was deleted with Success</h3>
+		<h3>The team with ID <%out.write(Integer.toString(team.getId())); %> was deleted with Success</h3>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
