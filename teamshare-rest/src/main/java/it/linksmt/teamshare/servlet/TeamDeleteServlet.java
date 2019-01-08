@@ -15,14 +15,14 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import it.linksmt.teamshare.business.dto.request.TeamRequestDto;
+import it.linksmt.teamshare.business.dtos.TeamDto;
 import it.linksmt.teamshare.business.services.TeamService;
 
 /**
- * Servlet implementation class TeamServlet
+ * Servlet implementation class TeamDeleteServlet
  */
-@WebServlet("/TeamServlet")
-public class TeamServlet extends HttpServlet {
+@WebServlet("/TeamDeleteServlet")
+public class TeamDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -41,29 +41,9 @@ public class TeamServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TeamServlet() {
+	public TeamDeleteServlet() {
 		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		if (!(request.getParameter("id").isEmpty())) {
-			request.setAttribute("team", service.getTeam(Integer.parseInt(request.getParameter("id"))));
-
-			RequestDispatcher rd = request.getRequestDispatcher("OneTeam.jsp");
-			rd.forward(request, response);
-		} else {
-			request.setAttribute("team", service.getTeams());
-
-			RequestDispatcher rd = request.getRequestDispatcher("teamResponse.jsp");
-			rd.forward(request, response);
-		}
-
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -73,18 +53,15 @@ public class TeamServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		TeamRequestDto dto = new TeamRequestDto();
+		TeamDto dto = new TeamDto();
+		if (!(request.getParameter("idDelete").isEmpty())) {
+			dto.setId(Integer.parseInt(request.getParameter("idDelete")));
+			service.deleteTeam(Integer.parseInt(request.getParameter("idDelete")));
 
-		
-		if (!(request.getParameter("name").isEmpty())) {
-
-			dto.setName(request.getParameter("name"));
-
-			service.addTeam(dto);
-
-			request.setAttribute("teamAdded", dto);
-			RequestDispatcher rd = request.getRequestDispatcher("TeamAdded.jsp");
+			request.setAttribute("teamDeleted", dto);
+			RequestDispatcher rd = request.getRequestDispatcher("TeamDeleted.jsp");
 			rd.forward(request, response);
+
 		}
 	}
 

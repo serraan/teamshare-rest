@@ -30,7 +30,7 @@
 		 </form>
 		 
 		 <h4>Delete a team</h4>
-		 <form action="team" method="delete">
+		 <form action="teamDelete" method="post">
 		  <div class="form-group">
 		  	<label for="idDelete">ID: </label>
 		  	<input type="number" name="idDelete" id="idDelete" class="form-control" placeholder="Enter the ID that you want to Delete">
