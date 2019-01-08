@@ -20,35 +20,6 @@
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		 </form>
 		 
-		 <h4>Insert the value to add a team:</h4>
-		<form action="team" method="post">
-		  <div class="form-group">
-		  	<label for="title">Name: </label>
-		    <input type="text" class="form-control" id="name" name="name" placeholder="Enter the name">
-		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
-		 </form>
-		 
-		 <h4>Update a team</h4>
-		 <form action="teamUpdate" method="post">
-		  <div class="form-group">
-		  	<label for="idUpdate">ID: </label>
-		  	<input type="number" name="idUpdate" id="idUpdate" class="form-control" placeholder="Enter the ID of the team that you want to update">
-		  	<label for="nameUpdate">New name: </label>
-		  	<input type="text" class="form-control" id="nameUpdate" name="nameUpdate" placeholder="Enter the name">
-		  	<button type="submit" class="btn btn-primary">Submit</button>
-		  </div>
-		 </form>
-		 
-		 <h4>Delete a team</h4>
-		 <form action="teamDelete" method="post">
-		  <div class="form-group">
-		  	<label for="idDelete">ID: </label>
-		  	<input type="number" name="idDelete" id="idDelete" class="form-control" placeholder="Enter the ID that you want to Delete">
-		  	<button type="submit" class="btn btn-primary">Submit</button>
-		  </div>
-		 </form>
-		 
 	</div>
 	
 </body>

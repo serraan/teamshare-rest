@@ -28,115 +28,161 @@
 <body>
 	<%
 		List<TeamDto> teams = (List<TeamDto>) request.getAttribute("team");
+		Integer idTeam = 0;
+		String teamName = "";
+		String teamNameSpaziato = "";
 		Integer counter = 0;
-		Integer[] idList;
 	%>
-	
-	<table class="table h3">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col-sm">#</th>
-				<th scope="col-sm">Team name</th>
-				<th scope="col-sm">Edit/Delete</th>
-			</tr>
-		</thead>
-		<%
-			for (TeamDto team : teams) {
-		%>
-		<tbody>
-			<tr>
-				<th scope="row">
-					<%
-						counter++;
-							out.write(Integer.toString(counter));
-					%>
-				</th>
-				<td>
-					<%
-						out.write(team.getName());
-					%>
-				</td>
-				<td>
-					<button type="button" class="btn btn-default" data-toggle="modal"
-						data-target="#editModal" value="<%team.getId();%>">
-						<span class="glyphicon glyphicon-pencil h3"></span>
-					</button>
-
-					<button type="button" class="btn btn-default" data-toggle="modal"
-						data-target="#deleteModal" value="<%team.getId();%>">
-						<span class="glyphicon glyphicon-trash h3" ></span>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-		<%
-			idList[counter] = team.getId();
-			}
-		%>
-	</table>
 	<div class="container">
-		<div class="modal fade h3" id="editModal" tabindex="-1" role="dialog"
-			aria-labelledby="editModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Edit team name</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
+
+		<table class="table h3">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col-sm">#</th>
+					<th scope="col-sm">Team name</th>
+					<th scope="col-sm">Edit/Delete</th>
+				</tr>
+			</thead>
+			<%
+				for (TeamDto team : teams) {
+					idTeam = team.getId();
+					teamName = team.getName();
+					teamNameSpaziato = team.getName();
+					teamName = teamName.replaceAll("\\s+", "");
+			%>
+			<tbody>
+				<tr>
+					<th scope="row">
+						<%
+							counter++;
+								out.write(Integer.toString(counter));
+						%>
+					</th>
+					<td>
+						<%
+							out.write(team.getName());
+						%>
+					</td>
+					<td>
+						<button type="button" class="btn btn-default" data-toggle="modal"
+							data-target="#edit<%=teamName%>" value="<%=idTeam%>">
+							<span class="glyphicon glyphicon-pencil h3"></span>
 						</button>
-					</div>
-					<div class="modal-body h3">
-						<form action="teamUpdate" method="post">
-							<div class="form-group">
-								<input class="d-none form-control" type="number" name="idUpdate"
-									id="idUpdate" value=""> Previous name: <strong></strong>
-								<br> <label for="nameUpdate" class="col-form-label">New
-									name:</label> <input type="text" class="form-control" name="nameUpdate"
-									id="nameUpdate">
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn-primary">Save
-										changes</button>
+
+						<button type="button" class="btn btn-default" data-toggle="modal"
+							data-target="#delete<%=teamName%>" value="<%=idTeam%>">
+							<span class="glyphicon glyphicon-trash h3"></span>
+						</button>
+						<div class="modal fade h3" id="edit<%=teamName%>" tabindex="-1"
+							role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Edit team
+											name</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body h3">
+										<form action="teamUpdate" method="post">
+											<div class="form-group">
+												<input class="d-none form-control" type="number"
+													name="idUpdate" id="idUpdate" value="<%=idTeam%>">
+												Previous name: <strong> <%=teamNameSpaziato%>
+												</strong> <br> <label for="nameUpdate" class="col-form-label">New
+													name:</label> <input type="text" class="form-control"
+													name="nameUpdate" id="nameUpdate">
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+													<button type="submit" class="btn btn-primary">Save
+														changes</button>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
 
-				</div>
-			</div>
-		</div>
+						<div class="modal fade h3" id="delete<%=teamName%>" tabindex="-1"
+							role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Confirm
+											deletion</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body h3">
+										<form action="teamDelete" method="POST">
+											<div>
+												<input class="d-none form-control" type="number"
+													name="idDelete" id="idDelete" value="<%=idTeam%>">
+												<strong>Delete team <%=teamName%>?
+												</strong>
+											</div>
 
-		<div class="modal fade h3" id="deleteModal" tabindex="-1"
-			role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Confirm
-							deletion</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body h3">
-						<form action="teamDelete" method="POST">
-							<div>
-								<strong>Delete team ?
-								</strong>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">No</button>
+												<button type="submit" class="btn btn-primary">Yes</button>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
+						</div>
 
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">No</button>
-								<button type="button" class="btn btn-primary">Yes</button>
+						<div class="modal fade h3" id="addTeam" tabindex="-1"
+							role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Add team</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body h3">
+										<form action="team" method="post">
+											<div class="form-group">
+
+												<strong> Enter the team name </strong> <br> <label
+													for="name" class="col-form-label">New name:</label> <input
+													type="text" class="form-control" id="name" name="name"
+													placeholder="Enter the name">
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+													<button type="submit" class="btn btn-primary">Add team</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+						</div>
+					</td>
+
+				</tr>
+
+			</tbody>
+
+			<%
+				}
+			%>
+		</table>
+		<button type="button" class="btn btn-default" data-toggle="modal"
+			data-target="#addTeam">
+			<span class="glyphicon glyphicon-plus h3"></span>
+		</button>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
