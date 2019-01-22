@@ -2,6 +2,8 @@ package it.linksmt.teamshare.business.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import it.linksmt.teamshare.entities.User;
 import it.linksmt.teamshare.repository.PostRepository;
 
 @Service
+@Transactional()
 public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostRepository postRepository;
