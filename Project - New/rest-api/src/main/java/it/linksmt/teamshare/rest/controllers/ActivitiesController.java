@@ -56,7 +56,7 @@ public class ActivitiesController {
 	@ApiOperation(value = "Attivita By Id", notes = "Servizio rest per visualizzare l'attivita tramite id", response = ActivityDto.class)
 	@ApiResponse(code = 200, message = "Attivita By Id", response = ActivityDto.class)
 	@GetMapping(value = "/{activityId}")
-	public ResponseEntity<ActivityDto> getACtivity(@PathVariable Integer activityId) {
+	public ResponseEntity<ActivityDto> getActivity(@PathVariable Integer activityId) {
 		ActivityDto att = new ActivityDto();
 		att = activityService.getActivity(activityId);
 		return new ResponseEntity<ActivityDto>(att, HttpStatus.OK);

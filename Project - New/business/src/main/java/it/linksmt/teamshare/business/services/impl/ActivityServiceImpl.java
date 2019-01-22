@@ -37,6 +37,9 @@ public class ActivityServiceImpl implements ActivityService {
 
 	@Override
 	public ActivityDto addActivity(ActivityRequestDto att) {
+		if(att.getIdUtenteAssegnatario()==null) {
+			att.setIdUtenteAssegnatario(null);
+		}
 		Activity a = ActivityConverter.MAPPER.toActivity(att);
 		a = activityRepository.save(a);
 		return ActivityConverter.MAPPER.toActivityDTO(a);

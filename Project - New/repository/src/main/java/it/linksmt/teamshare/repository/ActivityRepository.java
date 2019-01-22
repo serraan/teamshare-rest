@@ -15,5 +15,5 @@ public interface ActivityRepository extends CrudRepository<Activity, Integer> {
 	@Query(value="SELECT * FROM tb_attivita WHERE tb_attivita.id_utente_creatore = :idUtenteCreatore", nativeQuery= true)
 	List<Activity> findByIdUtenteCreatore(@Param("idUtenteCreatore") Integer idUtenteCreatore);
 	@Query(value="SELECT * FROM tb_attivita WHERE tb_attivita.id_utente_assegnatario = :idUtenteAssegnatario", nativeQuery= true)
-	List<Activity> findByIdUtenteAssegnatario(@Param("idUtenteCreatore") Integer idUtenteAssegnatario);
+	List<Activity> findByIdUtenteAssegnatario(@Param("idUtenteAssegnatario") Integer idUtenteAssegnatario);
 }
