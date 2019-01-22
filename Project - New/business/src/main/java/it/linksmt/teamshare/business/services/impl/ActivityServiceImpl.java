@@ -16,7 +16,7 @@ import it.linksmt.teamshare.entities.Activity;
 import it.linksmt.teamshare.repository.ActivityRepository;
 
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class ActivityServiceImpl implements ActivityService {
 
 	@Autowired

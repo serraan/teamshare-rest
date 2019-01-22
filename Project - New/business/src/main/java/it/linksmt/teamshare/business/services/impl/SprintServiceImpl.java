@@ -15,7 +15,7 @@ import it.linksmt.teamshare.converter.SprintConverter;
 import it.linksmt.teamshare.entities.Sprint;
 import it.linksmt.teamshare.repository.SprintRepository;
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class SprintServiceImpl implements SprintService {
 
 	@Autowired

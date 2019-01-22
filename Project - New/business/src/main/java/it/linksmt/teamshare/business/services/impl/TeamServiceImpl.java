@@ -14,7 +14,7 @@ import it.linksmt.teamshare.converter.TeamConverter;
 import it.linksmt.teamshare.entities.Team;
 import it.linksmt.teamshare.repository.TeamRepository;
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class TeamServiceImpl implements TeamService {
 	@Autowired
 	TeamRepository teamRepository;

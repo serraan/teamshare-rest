@@ -18,7 +18,7 @@ import it.linksmt.teamshare.entities.Note;
 import it.linksmt.teamshare.repository.NoteRepository;
 
 
-	@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+	@Transactional
 	@Service
 	public class NoteServiceImpl  implements NoteService {
 		

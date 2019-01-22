@@ -15,7 +15,7 @@ import it.linksmt.teamshare.converter.ImpedimentConverter;
 import it.linksmt.teamshare.entities.Impediment;
 import it.linksmt.teamshare.repository.ImpedimentRepository;
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class ImpedimentServiceImpl implements ImpedimentService {
 
 	@Autowired

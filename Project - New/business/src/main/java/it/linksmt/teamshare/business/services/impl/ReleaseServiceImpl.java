@@ -16,7 +16,7 @@ import it.linksmt.teamshare.entities.Release;
 import it.linksmt.teamshare.repository.ReleaseRepository;
 
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class ReleaseServiceImpl implements ReleaseService {
 
 	@Autowired

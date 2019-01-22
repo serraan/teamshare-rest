@@ -17,7 +17,7 @@ import it.linksmt.teamshare.entities.Comment;
 import it.linksmt.teamshare.repository.CommentRepository;
 
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class CommentServiceImpl implements CommentService {
 	
 	@Autowired

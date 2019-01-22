@@ -46,12 +46,12 @@ public class UsersController {
 	
 	@ApiOperation(value = "Lista Utenti By Nome/Cognome/Email", notes = "Servizio rest per visualizzare tutti gli utenti", response = UserDto.class)
 	@ApiResponse(code = 200, message = "Lista Utenti", response = UserDto.class)
-	@GetMapping(value="/{nome}{cognome}{email}")
+	@GetMapping(value="/{email}{nome}{cognome}")
 	public ResponseEntity<List<UserDto>> getUsers(@RequestParam(name = "email", required = false, defaultValue = "") @ApiParam(value = "Email utente", required = false, defaultValue = "") final String email,
 			@RequestParam(name = "nome", required = false, defaultValue = "") @ApiParam(value = "Nome utente", required = false, defaultValue = "") final String nome,
 			@RequestParam(name = "cognome", required = false, defaultValue = "") @ApiParam(value = "Cognome utente", required = false, defaultValue = "") final String cognome) {
 		List<UserDto> users = new ArrayList<UserDto>();
-		users = userService.searchUsers(nome,cognome,email);
+		users = userService.searchUsers(email,nome,cognome);
 		return new ResponseEntity<List<UserDto>>(users, HttpStatus.OK);
 	}
 	

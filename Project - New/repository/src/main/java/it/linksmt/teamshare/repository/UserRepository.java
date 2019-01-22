@@ -13,4 +13,5 @@ import it.linksmt.teamshare.entities.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
 	List<User> findByEmailContainingAndNomeContainingAndCognomeContaining(String email, String nome, String cognome);
+
 }

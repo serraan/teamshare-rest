@@ -16,7 +16,7 @@ import it.linksmt.teamshare.entities.Type;
 import it.linksmt.teamshare.repository.TypeRepository;
 
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class TypeServiceImpl implements TypeService{
 
 	@Autowired

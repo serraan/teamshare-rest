@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import it.linksmt.teamshare.business.services.ActivityStateService;
 
 @Service
-@Transactional(propagation=Propagation.REQUIRED, readOnly=true, noRollbackFor=Exception.class)
+@Transactional
 public class ActivityStateServiceImpl implements ActivityStateService {
 
 	
