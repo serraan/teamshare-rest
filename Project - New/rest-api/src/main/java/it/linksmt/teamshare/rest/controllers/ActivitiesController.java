@@ -38,6 +38,20 @@ public class ActivitiesController {
 		List<ActivityDto> att = activityService.searchActivity();
 		return new ResponseEntity<List<ActivityDto>>(att, HttpStatus.OK);
 	}
+	@ApiOperation(value = "Attivita By Id Utente Creatore", notes = "Servizio rest per visualizzare le attivita create da un utente", response = ActivityDto.class)
+	@ApiResponse(code = 200, message = "Attivita By Id Utente Creatore", response = ActivityDto.class)
+	@GetMapping(value = "/{idUtenteCreatore}/activities")
+	public ResponseEntity<List<ActivityDto>> getActivitiesByIdUtenteCreatore(@PathVariable("idUtenteCreatore") Integer idUtenteCreatore) {
+		List<ActivityDto> att = (List<ActivityDto>) activityService.getActivitiesByIdCreatore(idUtenteCreatore);
+		return new ResponseEntity<List<ActivityDto>>(att, HttpStatus.OK);
+	}
+	@ApiOperation(value = "Attivita By Id Utente Creatore", notes = "Servizio rest per visualizzare le attivita assegnate ad un utente", response = ActivityDto.class)
+	@ApiResponse(code = 200, message = "Attivita By Id Utente Assegnatario", response = ActivityDto.class)
+	@GetMapping(value = "/{idUtenteAssegnatario}/activities")
+	public ResponseEntity<List<ActivityDto>> getActivitiesByIdUtenteAssegnatario(@PathVariable("idUtenteAssegnatario") Integer idUtenteAssegnatario) {
+		List<ActivityDto> att = (List<ActivityDto>) activityService.getActivitiesByIdCreatore(idUtenteAssegnatario);
+		return new ResponseEntity<List<ActivityDto>>(att, HttpStatus.OK);
+	}
 
 	@ApiOperation(value = "Attivita By Id", notes = "Servizio rest per visualizzare l'attivita tramite id", response = ActivityDto.class)
 	@ApiResponse(code = 200, message = "Attivita By Id", response = ActivityDto.class)

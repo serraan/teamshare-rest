@@ -52,4 +52,12 @@ public class CommentServiceImpl implements CommentService {
 		return CommentConverter.MAPPER.toListCommentDTO(com);	
 	}
 
+	@Override
+	public List<CommentDto> searchCommentsOnPost(Integer idPost) {
+		List<Comment> comments = (List<Comment>) commentRepository.findAllByIdPost(idPost);
+	// LIST USING STREAM METHOD
+	//	comments = comments.stream().filter(currentComment -> currentComment.getPost().getId() == idPost).collect(Collectors.toList());
+		return CommentConverter.MAPPER.toListaCommentDTOResponse(comments);
+	}
+
 }
