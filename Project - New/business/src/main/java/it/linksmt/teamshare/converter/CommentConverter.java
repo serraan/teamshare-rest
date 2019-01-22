@@ -26,5 +26,6 @@ public interface CommentConverter {
 
 	@Mappings({ @Mapping(target = "post.id", source = "idPost"), @Mapping(target = "utente.id", source = "idUtente") })
 	Comment toComment(CommentRequestDto comment);
+	List<CommentDto> toListaCommentDTOResponse(Iterable<Comment> commentsByPost);
 
 }

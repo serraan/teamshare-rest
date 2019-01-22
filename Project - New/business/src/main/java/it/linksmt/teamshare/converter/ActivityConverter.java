@@ -17,7 +17,7 @@ public interface ActivityConverter {
 	ActivityConverter MAPPER = Mappers.getMapper(ActivityConverter.class);
 
 	List<ActivityDto> toListaAttivitaDTO(Iterable<Activity> allActivities);
-
+	List<ActivityDto> toListaAttivitaDTOResponse(Iterable<Activity> allActivities);
 	@Mappings({ @Mapping(target = "idUtenteCreatore", source = "utenteCreatore.id") })
 	ActivityDto toActivityDTO(Activity activity);
 

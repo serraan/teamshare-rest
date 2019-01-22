@@ -16,5 +16,6 @@ public interface CommentService {
 	public CommentDto updateComment(Integer idCommento, CommentRequestDto comment);
 	public void deleteComment(Integer idCommento);
 	public List<CommentDto> getComment();
+	public List<CommentDto> searchCommentsOnPost(Integer idPost);
 
 }

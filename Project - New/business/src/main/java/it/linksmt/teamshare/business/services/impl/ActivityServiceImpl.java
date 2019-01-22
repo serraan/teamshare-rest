@@ -54,5 +54,18 @@ public class ActivityServiceImpl implements ActivityService {
 	public void deleteActivity(Integer id) {
 		activityRepository.deleteById(id);
 	}
+	@Override
+	public List<ActivityDto> getActivitiesByIdCreatore(Integer idUtenteCreatore) {
+		List<Activity> activities = activityRepository.findByIdUtenteCreatore(idUtenteCreatore);
+		return ActivityConverter.MAPPER.toListaAttivitaDTOResponse(activities);
+	}
+
+
+
+	@Override
+	public List<ActivityDto> getActivitiesByIdAssegnatario(Integer idUtenteAssegnatario) {
+		List<Activity> activities = activityRepository.findByIdUtenteCreatore(idUtenteAssegnatario);
+		return ActivityConverter.MAPPER.toListaAttivitaDTOResponse(activities);
+	}
 
 }

@@ -41,18 +41,25 @@ import it.linksmt.teamshare.business.services.CommentService;
 		
 		
 		
-		@ApiOperation(value = "Lista Commenti ", notes = "Servizio rest per visualizzare tutti i commenti", response = CommentDto.class)
-		@ApiResponse(code = 200, message = "Lista Commenti", response = CommentDto.class)
-		@GetMapping(value="/{idCommento")
-		public ResponseEntity<List<CommentDto>> getComment(
-		@RequestParam(name = "idCommento", required = false, defaultValue = "") @ApiParam(value = "idCommento", required = false, defaultValue = "") final Integer idCommento ){
+			@ApiOperation(value = "Lista Commenti ", notes = "Servizio rest per visualizzare tutti i commenti", response = CommentDto.class)
+			@ApiResponse(code = 200, message = "Lista Commenti", response = CommentDto.class)
+			@GetMapping(value="/{idCommento}")
+			public ResponseEntity<List<CommentDto>> getComment(
+					@RequestParam(name = "idCommento", required = false, defaultValue = "") @ApiParam(value = "idCommento", required = false, defaultValue = "") final Integer idCommento ){
 			
+				
+				List<CommentDto> comment = new ArrayList<CommentDto>();
+				comment = commentService.getComment();
+				return new ResponseEntity<List<CommentDto>>(comment, HttpStatus.OK);
+			}
 			
-			List<CommentDto> comment = new ArrayList<CommentDto>();
-			comment = commentService.getComment();
-			return new ResponseEntity<List<CommentDto>>(comment, HttpStatus.OK);
-		}
-			
+			@ApiOperation(value = "Lista commenti di un post", notes = "Servizio rest per visualizzare tutti i commenti relativi ad un post", response = CommentDto.class)
+			@ApiResponse(code = 200, message = "Lista commenti di un post", response = CommentDto.class)
+			@GetMapping(value="/{idPost}/commenti")
+			public ResponseEntity<List<CommentDto>> getCommentsByPost(@PathVariable("idPost") Integer idPost) {
+				List<CommentDto> comments = commentService.searchCommentsOnPost(idPost);
+				return new ResponseEntity<List<CommentDto>>(comments, HttpStatus.OK);
+			}
 			
 			@ApiOperation(value = "Aggiungi Commento", notes = "Servizio rest per aggiungere un commento", response = CommentDto.class)
 			@ApiResponse(code = 200, message = "Aggiungi Commento", response = CommentDto.class)
@@ -80,6 +87,7 @@ import it.linksmt.teamshare.business.services.CommentService;
 					commentService.deleteComment(id);
 				}
 			}
+
 			
 			
 			
