@@ -18,8 +18,9 @@ import it.linksmt.teamshare.entities.Note;
 import it.linksmt.teamshare.repository.NoteRepository;
 
 
-	@Transactional()
+
 	@Service
+	@Transactional()
 	public class NoteServiceImpl  implements NoteService {
 		
 		@Autowired

@@ -16,7 +16,9 @@ import it.linksmt.teamshare.entities.User;
 import it.linksmt.teamshare.repository.UserRepository;
 
 @Service
+
 @Transactional()
+
 public class UserServiceImpl implements UserService {
 	
 	@Autowired

@@ -17,6 +17,7 @@ import it.linksmt.teamshare.repository.ContentRepository;
 
 @Service
 @Transactional()
+
 public class ContentServiceImpl implements ContentService{
 	
 	@Autowired

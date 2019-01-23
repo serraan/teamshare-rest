@@ -17,6 +17,7 @@ import it.linksmt.teamshare.entities.Comment;
 import it.linksmt.teamshare.repository.CommentRepository;
 
 @Service
+
 @Transactional()
 public class CommentServiceImpl implements CommentService {
 	

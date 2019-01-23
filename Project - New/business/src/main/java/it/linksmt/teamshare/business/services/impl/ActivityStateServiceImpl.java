@@ -8,6 +8,7 @@ import it.linksmt.teamshare.business.services.ActivityStateService;
 
 @Service
 @Transactional()
+
 public class ActivityStateServiceImpl implements ActivityStateService {
 
 	

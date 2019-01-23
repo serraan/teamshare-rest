@@ -1,3 +1,4 @@
+
 package it.linksmt.teamshare.repository;
 
 import java.util.List;
@@ -8,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import it.linksmt.teamshare.entities.Activity;
+
+
 
 
 @Repository
