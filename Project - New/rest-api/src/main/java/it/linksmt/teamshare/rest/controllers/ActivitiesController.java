@@ -24,7 +24,7 @@ import it.linksmt.teamshare.business.services.ActivityService;
 
 @Api(value = "Activity Controller", description = "Activity Controller", tags = { "Attivita" })
 @Controller
-@RequestMapping(name = "Activity Controller",value = "/activities", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Activity Controller",value = "/private/activities", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class ActivitiesController {
 
 	@Autowired

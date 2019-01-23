@@ -11,8 +11,10 @@ import it.linksmt.teamshare.business.dtos.PostDto;
 import it.linksmt.teamshare.business.request.PostRequestDto;
 import it.linksmt.teamshare.business.services.PostService;
 import it.linksmt.teamshare.converter.PostConverter;
+import it.linksmt.teamshare.entities.Comment;
 import it.linksmt.teamshare.entities.Post;
 import it.linksmt.teamshare.entities.User;
+import it.linksmt.teamshare.repository.CommentRepository;
 import it.linksmt.teamshare.repository.PostRepository;
 
 @Service
@@ -20,10 +22,16 @@ import it.linksmt.teamshare.repository.PostRepository;
 public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostRepository postRepository;
-	
+	@Autowired
+	private CommentRepository commRepository;
 	@Override
 	public List<PostDto> getAll() {
 		List<Post> att = (List<Post>) postRepository.findAll();
+//		for (Post post : att) {
+//			List<Comment> comments = (List<Comment>) commRepository.findAllByIdPost(post.getId());
+//			post.setCommento(comments);
+//			
+//		}
 		return PostConverter.MAPPER.toListaPostDTOResponse(att);
 	}
 

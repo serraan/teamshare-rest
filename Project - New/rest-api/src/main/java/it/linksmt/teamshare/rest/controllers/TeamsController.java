@@ -23,7 +23,7 @@ import it.linksmt.teamshare.business.services.TeamService;
 
 @Api(value = "Team Controller", description = "Team Controller", tags = { "Team" })
 @Controller
-@RequestMapping(name = "Team Controller",value = "/teams", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Team Controller",value = "/private/teams", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class TeamsController {
 	@Autowired
 	TeamService teamService;

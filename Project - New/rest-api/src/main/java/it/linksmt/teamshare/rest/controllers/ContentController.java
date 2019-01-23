@@ -24,7 +24,7 @@ import it.linksmt.teamshare.business.services.ContentService;
 
 @Api(value = "Content Controller", description = "Content Controller", tags = { "Content" })
 @Controller
-@RequestMapping(name = "Content Controller",value = "/Content", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Content Controller",value = "/private/Content", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class ContentController {
 
 	@Autowired

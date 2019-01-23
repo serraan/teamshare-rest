@@ -37,7 +37,7 @@ public class Post implements Serializable{
 	@Column(name = "data_pubblicazione")
 	private Date dataPost;
 	
-	@OneToMany(mappedBy = "post", cascade= {CascadeType.ALL}, orphanRemoval=true)
+	@OneToMany(mappedBy = "post")
 	private List<Comment> commento;
 
 	public Integer getId() {

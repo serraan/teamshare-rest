@@ -25,7 +25,7 @@ import it.linksmt.teamshare.business.services.ImpedimentService;
 
 @Api(value = "Impediment Controller", description = "Impediment Controller", tags = { "Impediment" })
 @Controller
-@RequestMapping(name = "Impediment Controller",value = "/impediments", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Impediment Controller",value = "/private/impediments", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class ImpedimentController {
 	@Autowired
 	ImpedimentService impedimentService;

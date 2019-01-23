@@ -27,7 +27,7 @@ import it.linksmt.teamshare.business.services.NoteService;
 
 @Api(value = "Note Controller", description = "Note Controller", tags = { "Note" })
 @Controller
-@RequestMapping(name = "Note Controller",value = "/note", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Note Controller",value = "/private/note", produces = { MediaType.APPLICATION_JSON_VALUE })
 
 public class NoteController {
 

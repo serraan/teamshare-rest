@@ -23,7 +23,7 @@ import it.linksmt.teamshare.business.services.PostService;
 
 @Api(value = "Post Controller", description = "Post Controller", tags = { "Post" })
 @Controller
-@RequestMapping(name = "Post Controller", value = "/posts", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Post Controller", value = "/private/posts", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class PostsController {
 	@Autowired
 	private PostService postService;

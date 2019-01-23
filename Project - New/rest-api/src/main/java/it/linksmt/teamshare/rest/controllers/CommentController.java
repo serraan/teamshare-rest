@@ -31,7 +31,7 @@ import it.linksmt.teamshare.business.services.CommentService;
 
 	@Api(value = "Commento Controller", description = "Commento Controller", tags = { "Commento" })
 	@Controller
-	@RequestMapping(name = "Commento Controller",value = "/comment", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(name = "Commento Controller",value = "/private/comment", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public class CommentController {
 		
 		@Autowired

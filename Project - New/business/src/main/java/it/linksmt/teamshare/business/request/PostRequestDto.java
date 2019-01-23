@@ -2,6 +2,9 @@ package it.linksmt.teamshare.business.request;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import it.linksmt.teamshare.entities.Comment;
 
 public class PostRequestDto implements Serializable {
 
@@ -15,7 +18,7 @@ public class PostRequestDto implements Serializable {
 	private String riferimentoPost;
 	private Integer idUtente;
 	private Date dataPost;
-	
+
 	public String getTitoloPost() {
 		return titoloPost;
 	}

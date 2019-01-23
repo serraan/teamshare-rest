@@ -25,7 +25,7 @@ import it.linksmt.teamshare.business.services.TypeService;
 
 @Api( tags = { "Tipo" } )
 @RestController
-@RequestMapping( name = "Tipo Controller", value = "/stato" )
+@RequestMapping( name = "Tipo Controller", value = "/private/stato" )
 public class TypeController {
 
 	@Autowired

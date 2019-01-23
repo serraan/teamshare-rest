@@ -25,7 +25,7 @@ import it.linksmt.teamshare.business.services.SprintService;
 
 @Api(value = "Sprint Controller", description = "Sprint Controller", tags = { "Sprint" })
 @Controller
-@RequestMapping(name = "Sprint Controller",value = "/sprint", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Sprint Controller",value = "/private/sprint", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class SprintController {
 	@Autowired
 	private SprintService sprintService;

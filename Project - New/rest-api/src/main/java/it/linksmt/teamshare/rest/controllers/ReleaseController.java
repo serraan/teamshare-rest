@@ -24,7 +24,7 @@ import it.linksmt.teamshare.business.services.ReleaseService;
 
 @Api(value = "Release Controller", description = "Release Controller", tags = { "Release" })
 @Controller
-@RequestMapping(name = "Release Controller",value = "/release", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Release Controller",value = "/private/release", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class ReleaseController {
 
 	@Autowired

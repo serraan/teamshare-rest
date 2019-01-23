@@ -29,7 +29,7 @@ import it.linksmt.teamshare.business.services.UserService;
 
 @Api(value = "Utente Controller", description = "Utente Controller", tags = { "Utente" })
 @Controller
-@RequestMapping(name = "Utente Controller",value = "/users", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(name = "Utente Controller",value = "/private/users", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class UsersController {
 	
 	@Autowired
