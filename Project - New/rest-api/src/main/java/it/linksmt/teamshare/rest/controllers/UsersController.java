@@ -55,6 +55,16 @@ public class UsersController {
 		return new ResponseEntity<List<UserDto>>(users, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Utente By Email", notes = "Servizio rest per visualizzare un utente tramite email", response = UserDto.class)
+	@ApiResponse(code = 200, message = "Lista Utenti", response = UserDto.class)
+	@PostMapping(value="/")
+	public ResponseEntity<UserDto> getUserByEmail(@PathVariable("email") @ApiParam(value = "Email utente", required = false, defaultValue = "") final String email) {
+		UserDto user = new UserDto();
+		user = userService.getUserByEmail(email);
+		return new ResponseEntity<UserDto>(user, HttpStatus.OK);
+	}
+	
+	
 
 	@ApiOperation(value = "Utenti By Id", notes = "Servizio rest per visualizzare gli utenti tramite gli id", response = UserDto.class)
 	@ApiResponse(code = 200, message = "Utenti By Id", response = UserDto.class)
@@ -65,13 +75,6 @@ public class UsersController {
 		return new ResponseEntity<UserDto>(user, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Aggiungi Utente", notes = "Servizio rest per aggiungere un utente", response = UserDto.class)
-	@ApiResponse(code = 200, message = "Aggiungi Utente", response = UserDto.class)
-	@PostMapping( value="/")
-	public ResponseEntity<UserDto> addUser(@RequestBody final UserRequestDto user ) {
-		UserDto u = userService.addUser(user);
-		return new ResponseEntity<UserDto>(u, HttpStatus.CREATED);
-	}
 	
 	@ApiOperation(value = "Update Utente", notes = "Servizio rest per aggiornare un utente", response = UserDto.class)
 	@ApiResponse(code = 200, message = "Update Utente", response = UserDto.class)

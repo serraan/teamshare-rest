@@ -37,14 +37,6 @@ public class UserServiceImpl implements UserService {
 		return UserConverter.MAPPER.toUserDTO(users.get());
 	}
 
-	@Override
-	public UserDto addUser(UserRequestDto user) {
-		User u = UserConverter.MAPPER.toUser(user);
-		u = userRepository.save(u);
-		
-		return UserConverter.MAPPER.toUserDTO(u);
-	}
-	
 
 	@Override
 	public UserDto updateUser(Integer userId, UserRequestDto user) {
@@ -63,6 +55,12 @@ public class UserServiceImpl implements UserService {
 	public List<UserDto> searchAll() {
 		List<User> users = userRepository.findAll();
 		return UserConverter.MAPPER.toListUserDTO(users);
+	}
+
+	@Override
+	public UserDto getUserByEmail(String email) {
+		User u = userRepository.findByEmail(email);
+		return UserConverter.MAPPER.toUserDTO(u);
 	}
 
 

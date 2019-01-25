@@ -2,18 +2,19 @@ package it.linksmt.teamshare.business.services.impl;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.linksmt.teamshare.business.dtos.CommentDto;
+import it.linksmt.teamshare.business.dtos.PostDto;
 import it.linksmt.teamshare.business.request.CommentRequestDto;
 import it.linksmt.teamshare.business.services.CommentService;
+import it.linksmt.teamshare.business.services.PostService;
 import it.linksmt.teamshare.converter.CommentConverter;
+import it.linksmt.teamshare.converter.PostConverter;
 import it.linksmt.teamshare.entities.Comment;
+import it.linksmt.teamshare.entities.Post;
 import it.linksmt.teamshare.repository.CommentRepository;
 
 @Service
@@ -23,7 +24,9 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	private CommentRepository 	commentRepository;
-
+	
+	@Autowired
+	private PostService postService;
 	@Override
 	public CommentDto addComment(CommentRequestDto comment) {
 		Comment com = CommentConverter.MAPPER.toComment(comment);
@@ -55,10 +58,10 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentDto> searchCommentsOnPost(Integer idPost) {
-		List<Comment> comments = (List<Comment>) commentRepository.findAllByIdPost(idPost);
-	// LIST USING STREAM METHOD
-	//	comments = comments.stream().filter(currentComment -> currentComment.getPost().getId() == idPost).collect(Collectors.toList());
-		return CommentConverter.MAPPER.toListaCommentDTOResponse(comments);
+		PostDto post = postService.getPostById(idPost);
+		Post p = PostConverter.MAPPER.toPost(post);
+		List<Comment> comments = commentRepository.findByPost(p);	
+		return CommentConverter.MAPPER.toListCommentDTO(comments);
 	}
 
 }

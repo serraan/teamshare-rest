@@ -1,6 +1,7 @@
 package it.linksmt.teamshare.business.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -8,14 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.linksmt.teamshare.business.dtos.PostDto;
+import it.linksmt.teamshare.business.dtos.UserDto;
 import it.linksmt.teamshare.business.request.PostRequestDto;
 import it.linksmt.teamshare.business.services.PostService;
 import it.linksmt.teamshare.converter.PostConverter;
-import it.linksmt.teamshare.entities.Comment;
 import it.linksmt.teamshare.entities.Post;
-import it.linksmt.teamshare.entities.User;
-import it.linksmt.teamshare.repository.CommentRepository;
 import it.linksmt.teamshare.repository.PostRepository;
+import it.linksmt.teamshare.repository.UserRepository;
 
 @Service
 @Transactional()
@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostRepository postRepository;
 	@Autowired
-	private CommentRepository commRepository;
+	private UserRepository userRepository;
 	@Override
 	public List<PostDto> getAll() {
 		List<Post> att = (List<Post>) postRepository.findAll();
@@ -35,11 +35,6 @@ public class PostServiceImpl implements PostService {
 		return PostConverter.MAPPER.toListaPostDTOResponse(att);
 	}
 
-	@Override
-	public PostDto getPostByUtenteCreatore(User utenteCreatore) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public PostDto addPost(PostRequestDto postRequestDto) {
@@ -53,4 +48,21 @@ public class PostServiceImpl implements PostService {
 		postRepository.deleteById(id);
 	}
 
+
+	@Override
+	public PostDto getPostById(Integer idPost) {
+		Optional<Post> p = postRepository.findById(idPost);
+		Post post;
+		if(p.isPresent()) {
+			post = p.get();
+		}else {
+			return null;
+		}
+		return PostConverter.MAPPER.toPostDto(post);
+	}
+
+
+
+
+	
 }

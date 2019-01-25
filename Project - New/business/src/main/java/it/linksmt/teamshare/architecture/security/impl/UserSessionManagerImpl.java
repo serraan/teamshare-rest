@@ -6,7 +6,7 @@
  * Contributors:
  *     Links Management & Technology S.p.A. - initial API and implementation
  *******************************************************************************/
-package it.linksmt.teamshare.architecture.security;
+package it.linksmt.teamshare.architecture.security.impl;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,6 +15,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
+
+import it.linksmt.teamshare.architecture.security.MyUserDetails;
+import it.linksmt.teamshare.architecture.security.UserSessionManager;
 
 /**
  * @author mario

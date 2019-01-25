@@ -16,7 +16,14 @@ public class UserAuthenticationDto implements Serializable {
 	private String cognome;
 	private String email;
 	private Date dataNascita;
+	private String avatar;
 	
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 	/**
 	 * @return the id
 	 */

@@ -22,6 +22,8 @@ import it.linksmt.teamshare.business.dtos.UserAuthenticationDto;
  * @author mario
  */
 public class MyUserDetails implements Serializable {
+	private static final long serialVersionUID = -8621377922276344027L;
+
 	private final UserAuthenticationDto user;
 
 	private final List<SimpleGrantedAuthority> roles = new ArrayList<>();
